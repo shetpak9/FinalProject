@@ -62,18 +62,14 @@ body {
     background: #0b2545;
     padding: 10px;
     border-radius: 8px;
+    margin-bottom: 10px;
+
     font-size: 0.8rem;
 }
 
-.preview-img {
-    width: 100%;
-    margin-top: 10px;
-    border-radius: 8px;
-    display: none; /* hidden until image is selected */
-}
-
-.picture img{
-    height: 135px;
+.button input{
+    background: #0b2545;
+    color: white;
 }
 
 /* Map Section */

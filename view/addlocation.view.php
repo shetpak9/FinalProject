@@ -34,30 +34,20 @@
 
                 <div class="picture">
                     <h3>Upload Image</h3>
-                    <img id="preview" src="" alt="Image Preview" class="preview-img">
                     <div class="upload-box">
                         <input type="file" name="image" id="imageUpload" accept="image/*">
                         <label for="imageUpload" class="upload-label">
                             Click to Upload Image
                         </label>
                     </div>
-                    <script>
-                        document.getElementById("imageUpload").addEventListener("change", function(e) {
-                            const file = e.target.files[0];
-
-                            if (file) {
-                                const preview = document.getElementById("preview");
-                                preview.src = URL.createObjectURL(file);
-                                preview.style.display = "block";
-                            }
-                        });
-                    </script>
                 </div>
-            </div>
-            <div class="map_section">
+
                 <div class="button">
                     <input type="submit" name="submit" value="Save">
                 </div>
+            </div>
+            
+            <div class="map_section">
                 <div class="map">
                     <div id="leaflet-map">
 
@@ -69,3 +59,7 @@
 </form>
 </body>
 <script src="js/leaflet.map.js"></script>
+<script src="js/function.js"></script>
+<script>
+    onclick(map);
+</script>

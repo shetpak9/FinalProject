@@ -21,8 +21,8 @@ class LocationGateway{
     }
     
     public function create($data): string{
-        $sql = "INSERT INTO location (room, latitude, longtitude, type_id, floor, description, capacity) " .
-               "VALUES (:room, :latitude, :longitude, :type_id, :floor, :description, :capacity)";
+        $sql = "INSERT INTO location (room, latitude, longitude, type_id, floor, description, capacity, image) " .
+               "VALUES (:room, :latitude, :longitude, :type_id, :floor, :description, :capacity, :image)";
 
         $stmt = $this->conn->prepare($sql);
 
@@ -33,6 +33,7 @@ class LocationGateway{
         $stmt->bindValue(":floor", $data["floor"], PDO::PARAM_INT);
         $stmt->bindValue(":description", $data["description"] ?? null, PDO::PARAM_STR);
         $stmt->bindValue(":capacity", $data["capacity"], PDO::PARAM_INT);
+        $stmt->bindValue(":image", $data["image"], PDO::PARAM_STR);
 
         $stmt->execute();
 
@@ -56,7 +57,7 @@ class LocationGateway{
         $sql = "UPDATE location SET " .
                "room = :room, " .
                "latitude = :latitude, " .
-               "longtitude = :longitude, " .
+               "longitude = :longitude, " .
                "type_id = :type_id, " .
                "floor = :floor, " .
                "description = :description, " .

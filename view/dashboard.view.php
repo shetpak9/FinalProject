@@ -167,35 +167,8 @@
             </div>
         </section>
 
-        <section class="quick-actions">
-            <div class="quick-actions__button">
-                <button class="button" data-icon="view_map">
-                    View Interactive Map <br>
-                    <img src="view/images/map.png" alt="">
-                </button>
-                <button class="button" data-icon="location">
-                    Manage Location <br>
-                    <img src="view/images/location.png" alt="">
-                </button>
-                <button class="button" data-icon="analytics">
-                    Analytics <br>
-                    <img src="view/images/bar-chart.png" alt="">
-                </button>
-            </div>
-        </section>
+        
     </div>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script>
-    const map = L.map('leaflet-map').setView([14.483111, 121.187472], 28);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-    }).addTo(map);
-
-    L.marker([14.483111, 121.187472])
-        .addTo(map)
-        .bindPopup("Sample Location")
-        .openPopup();
-</script>
 </body>
 </html>
+<script src="js/leaflet.map.js"></script>

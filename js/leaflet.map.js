@@ -1,6 +1,6 @@
 let marker;
 
-const map = L.map('leaflet-map').setView([14.483111, 121.187472], 29);
+window.map = L.map('leaflet-map').setView([14.483111, 121.187472], 29);
 
 var Stadia_AlidadeSatellite = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.{ext}', {
 	minZoom: 0,
@@ -9,21 +9,30 @@ var Stadia_AlidadeSatellite = L.tileLayer('https://tiles.stadiamaps.com/tiles/al
 	ext: 'jpg'
 }).addTo(map);
 
-// Click event
-map.on('click', function(e) {
-    const { lat, lng } = e.latlng;
 
-    // Remove old marker
-    if (marker) {
-        map.removeLayer(marker);
-    }
+fetch('/FinalProject/src/api/location')
+    .then(res => res.json())
+    .then(locations => {
+        console.log("Locations:", locations);
 
-    // Add new marker
-    marker = L.marker([lat, lng]).addTo(map);
+        locations.forEach(loc => {
+            // Convert lat/lng to numbers
+            const lat = parseFloat(loc.latitude);
+            const lng = parseFloat(loc.longitude);
 
-    // Save to hidden inputs
-    document.getElementById('latitude').value = lat;
-    document.getElementById('longitude').value = lng;
+            // Add marker
+            const marker = L.marker([lat, lng]).addTo(map);
 
-    marker.bindPopup(`Lat: ${lat}<br>Lng: ${lng}`).openPopup();
-});
+            // Popup content
+            marker.bindPopup(`
+                <b>${loc.room}</b><br>
+                Floor: ${loc.floor}<br>
+                Capacity: ${loc.capacity}<br>
+                ${loc.description || ""}
+                <br>
+                ${loc.image ? `<img src="uploads/${loc.image}" width="150">` : ""}
+            `);
+        });
+    })
+    .catch(err => console.error("Error loading locations:", err));
+
