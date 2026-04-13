@@ -1,0 +1,209 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #D8CFC2;
+    padding: 20px;
+}
+
+.flex-group{
+    display: flex;
+    gap: 5px;
+}
+.flex-group a{
+    margin-right: 15px;
+    text-decoration: none;
+    color: #0b2545;
+    font-weight: 500;
+}
+header h1{
+    font-size: 1.5rem;
+    font-weight: 600;
+    
+    color: whitesmoke;
+}
+header p{
+    font-size: 0.8rem;
+    color: black;
+    margin-bottom: 20px;
+}
+header h1 span{
+    color: #0B2545;
+}
+
+.search_bar{
+    background: #0B2545;
+    color: white;
+
+    padding:10px;
+    width: fit-content;
+    border-radius: 6px;
+
+    margin-bottom: 10px;
+}
+.search_bar input{
+    width: 700px;
+    padding: 10px;
+    
+    border-radius: 5px;
+
+    margin-bottom: 5px;
+}
+.search_bar__filter{
+    display: flex;
+    align-items: center;
+    gap:5px;
+}
+.search_bar__filter__select{
+    width: 200px;
+    padding: 5px;
+    
+    border-radius: 20px;
+
+    margin-right:10px;
+}
+.content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+.card{
+    background: #eee;
+    padding: 25px;
+    border-radius: 10px;
+}
+.card__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    margin-bottom: 10px;
+}
+.card__header h3{
+    font-size: 1.2rem;
+    font-weight:bold
+}
+.card_icon{
+    height: 15px;
+    width: 15px;
+    margin-right: 3px;
+}
+.status {
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px gray solid;
+
+    font-size: 0.7rem;
+    color: white;
+}
+.details_button{
+    display: flex;
+    justify-content: space-between;
+}
+.com_button input[type="submit"],
+.com_button button[type="button"] {
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 15px; /* Added horizontal padding for better shape */
+    cursor: pointer;   /* Makes it feel like a real button on hover */
+}
+.edit{
+    background:#F44336  ;
+}
+.delete{
+    background: #0B2545;
+}
+
+
+.green { background: #4CAF50; }
+.red { background: #F44336; }
+.orange { background: #FF9800; }
+
+/*==========================
+  =====MODAL POPUP==========
+  ==========================*/
+
+.edit_dialog {
+    border: none;
+    border-radius: 10px;
+    padding: 0;
+    width: 500px;
+}
+
+.modal_form {
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+label{
+    color: gray;
+}
+.modal_body{
+    border:1px black solid;
+    border-radius: 5px;
+    padding: 10px;
+
+}
+.modal_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 5px;
+}
+
+.modal_header h2 {
+    font-size: 1.3rem;
+}
+
+.modal_header button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.edit_btn {
+    border: 1px solid black;
+    background: white;
+}
+
+.delete_btn {
+    border: 1px solid red;
+    color: red;
+    background: white;
+}
+
+.modal_body h3 {
+    margin: 15px 0;
+}
+
+.row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.input_group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.input_group input,
+.input_group select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.bottom {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.save_btn {
+    background: #1e6fff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+}

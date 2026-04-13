@@ -62,9 +62,11 @@ class LocationGateway{
                "floor = :floor, " .
                "description = :description, " .
                "capacity = :capacity, " .
-               "status = :status " .
+               "status_id = :status, " .
+               "image = :image ". 
                "WHERE id = :id";
 
+        
         $stmt = $this->conn->prepare($sql);
 
         $stmt->bindValue(":room", $new["room"] ?? $current["room"], PDO::PARAM_STR);
@@ -74,7 +76,8 @@ class LocationGateway{
         $stmt->bindValue(":floor", $new["floor"] ?? $current["floor"], PDO::PARAM_INT);
         $stmt->bindValue(":description", $new["description"] ?? $current["description"], PDO::PARAM_STR);
         $stmt->bindValue(":capacity", $new["capacity"] ?? $current["capacity"], PDO::PARAM_INT);
-        $stmt->bindValue(":status", $new["status"] ?? $current["status"], PDO::PARAM_STR);
+        $stmt->bindValue(":status", $new["status_id"] ?? $current["status_id"], PDO::PARAM_STR);
+        $stmt->bindValue(":image", $new["image"] ?? $current["image"], PDO::PARAM_STR);
         $stmt->bindValue(":id", $current["id"], PDO::PARAM_INT);
 
         $stmt->execute();
@@ -122,5 +125,16 @@ class LocationGateway{
         }
 
         return $data; 
+    }
+
+    public function getLocDetails(): array{
+        $sql = 'SELECT location.id, location.room, location.floor, location.capacity, location_type.name, status_type.status_type FROM location '.
+        'JOIN location_type ON location.type_id = location_type.id '.
+        'JOIN status_type ON location.status_id = status_type.id';
+        $stmt = $this->conn->query($sql);
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
     }
 }
