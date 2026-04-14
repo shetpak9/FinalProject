@@ -2,7 +2,7 @@
 <form method="POST" action="" enctype="multipart/form-data">
     <div class="container">
         <div class="top_text">
-            <a href="">Back to Home</a>
+            <a href="/FinalProject/">Back to Home</a>
             <p> | Add Location</p>
         </div>
 
@@ -58,6 +58,7 @@
     </div>
 </form>
 </body>
+</html>
 <script src="js/leaflet.map.js"></script>
 <script src="js/function.js"></script>
 <script>

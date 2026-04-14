@@ -86,13 +86,25 @@ class LocationGateway{
     }
 
     public function delete($id){
+        $sql = "SELECT image FROM location WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if($row && !empty($row['image'])){
+            $path = dirname(__DIR__) . "/uploads/" . $row['image'];
+
+            if(file_exists($path)){
+                unlink($path);
+            }
+        }
+
         $sql = "DELETE FROM location " .
                "WHERE id = :id";
-
         $stmt = $this->conn->prepare($sql);
-
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
-
         $stmt->execute();
     }
 

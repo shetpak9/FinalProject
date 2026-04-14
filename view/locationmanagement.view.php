@@ -4,7 +4,7 @@
     <div class="top_text">
         <div class="flex-group">
             <img src="view/images/home-1-svgrepo-com.svg" alt="">
-            <a href="">Back To Home</a>
+            <a href="/FinalProject/">Back To Home</a>
         </div>
         <header>
             <h1>Location <span>Management</span></h1>
@@ -205,23 +205,23 @@
 
             <div class="input_group">
                 <label>Event Name*</label>
-                <input type="text" name="title">
+                <input type="text" name="title" required>
             </div>
             
             <div class="input_group">
                 <label>Description</label>
-                <input type="text" name="description">
+                <input type="text" name="description" >
             </div>
             <div class="modal_flex-group">
                 <div class="modal_flex-group__txtbox">
                     <div class="input_group">
-                        <label>Time*</label>
-                        <input type="datetime-local" id="meeting" name="time">
+                        <label>Date & Time*</label>
+                        <input type="datetime-local" id="meeting" name="time" required>
                     </div>
 
                     <div class="input_group">
                         <label>Location</label>
-                        <select name="location_id">
+                        <select name="location_id" required>
                             <option value="" disabled selected>Select Location</option>
                         <?php foreach($data as $row ): ?>
                             <option value="<?= $row['id'] ?>">
@@ -233,7 +233,7 @@
 
                     <div class="input_group">
                         <label>Organizer</label>
-                        <input type="text" name="organizer">
+                        <input type="text" name="organizer" required>
                     </div>
                 </div>
                 <div class="modal_flex-group__btn">

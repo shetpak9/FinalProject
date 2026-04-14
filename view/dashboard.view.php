@@ -39,7 +39,6 @@
             <div class="map">
                 <div class="map__header">
                     <h3>Interactive Map</h3>
-                    <h4><a href="">View Full Map →</a></h4>
                 </div>
                 <div class="placeholder__map">
                     <div id="leaflet-map">
@@ -167,6 +166,13 @@
             </div>
         </section>
 
+        <section class="quick-actions">
+            <div class="quick-actions__button">
+                <button onclick="window.location.href='addlocation'">Add Locations <br> <img src="view/images/map.png" alt=""></button>
+                <button onclick="window.location.href='locationmanagement'">Manage Locations <br><img src="view/images/location.png" alt=""></button>
+                <button onclick="window.location.href='viewlogs'">View Logs <br><img src="view/images/bar-chart.png" alt=""></button>
+            </div>
+        </section>
         
     </div>
 </body>

@@ -3,7 +3,10 @@
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 $route = [
-    '/FinalProject/' => 'controllers/locationmanagement.php',
+    '/FinalProject/' => 'controllers/dashboard.php',
+    '/FinalProject/addlocation' => 'controllers/addlocation.php',
+    '/FinalProject/locationmanagement' => 'controllers/locationmanagement.php',
+    '/FinalProject/viewlogs' => 'controllers/viewlogs.php',
 ];
 
 if (str_contains($path, '/src/api/location')) {
