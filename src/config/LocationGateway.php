@@ -137,4 +137,54 @@ class LocationGateway{
 
         return $data;
     }
+
+    public function search($keyword = '', $type_id = '', $status_id = ''): array{
+        $sql = "SELECT * FROM location " .
+               "WHERE room LIKE :keyword ";
+
+        if (!empty($type_id)) {
+            $sql .= "AND type_id = :type_id ";
+        }
+
+        if (!empty($status_id)) {
+            $sql .= "AND status_id = :status_id ";
+        }
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":keyword", "%$keyword%", PDO::PARAM_STR);
+        if (!empty($type_id)) {
+            $stmt->bindValue(":type_id", $type_id, PDO::PARAM_INT);
+        }
+        if (!empty($status_id)) {
+            $stmt->bindValue(":status_id", $status_id, PDO::PARAM_INT);
+        }
+        $stmt->execute();
+
+        $data = [];
+
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $data[] = $row;
+        }
+        
+        return $data;
+    }
+    public function addEvent($data): string{
+        $sql = "INSERT INTO event (title, description, location_id, time, organizer) " .
+               "VALUES (:title, :description, :location_id, :time, :organizer)";
+
+        $stmt = $this->conn->prepare($sql);
+
+        $dt = new DateTime($data["time"]);
+        $formatted = $dt->format("Y-m-d H:i:s");
+
+        $stmt->bindValue(":title", $data["title"], PDO::PARAM_STR);
+        $stmt->bindValue(":description", $data["description"] ?? null, PDO::PARAM_STR);
+        $stmt->bindValue(":location_id", $data["location_id"], PDO::PARAM_INT);
+        $stmt->bindValue(":time", $formatted, PDO::PARAM_STR);
+        $stmt->bindValue(":organizer", $data["organizer"], PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        return $this->conn->lastInsertId();
+    }
 }

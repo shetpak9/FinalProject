@@ -3,7 +3,7 @@
 <div class="container">
     <div class="top_text">
         <div class="flex-group">
-            <img src="" alt="">
+            <img src="view/images/home-1-svgrepo-com.svg" alt="">
             <a href="">Back To Home</a>
         </div>
         <header>
@@ -13,29 +13,36 @@
     </div>
 
     <div class="search_bar">
-        <input type="text" name="search" class="icon-input" placeholder="Search...">
+        <form method="GET" action="">
+            <input type="text" name="keyword" placeholder="Search...">
         
-        <div class="search_bar__filter">
-            
-            <img class="card_icon" src="view/images/filter-svgrepo-com.svg" alt="">
-            <h4>Filters: </h4>
-            <select class="search_bar__filter__select" name="type_id" id="">
-                <option value="">All types</option>
-                <option value="1">Classroom</option>
-                <option value="2">Lab</option>
-                <option value="3">Office</option>
-                <option value="4">Other Facilities</option>
-            </select>
+            <div class="search_bar__filter">
 
-            <select class="search_bar__filter__select" name="status_id" id="">
-                <option value="">All Status</option>
-                <option value="1">Available</option>
-                <option value="2">Maintenance</option>
-                <option value="3">Not Available</option>
-            </select>
-        </div>
+                <img class="card_icon" src="view/images/filter-svgrepo-com.svg" alt="">
+                <h4>Filters: </h4>
+                <select class="search_bar__filter__select" name="type_id" id="">
+                    <option value="" <?= !isset($_GET['type_id']) ? 'selected' : '' ?>>All types</option>
+                    <option value="1" <?= isset($_GET['type_id']) && $_GET['type_id'] === '1' ? 'selected' : '' ?>>Classroom</option>
+                    <option value="2" <?= isset($_GET['type_id']) && $_GET['type_id'] === '2' ? 'selected' : '' ?>>Lab</option>
+                    <option value="3" <?= isset($_GET['type_id']) && $_GET['type_id'] === '3' ? 'selected' : '' ?>>Office</option>
+                    <option value="4" <?= isset($_GET['type_id']) && $_GET['type_id'] === '4' ? 'selected' : '' ?>>Other Facilities</option>
+                </select>
+
+                <select class="search_bar__filter__select" name="status_id" id="">
+                    <option value="" <?= !isset($_GET['status_id']) ? 'selected' : '' ?>>All Status</option>
+                    <option value="1" <?= isset($_GET['status_id']) && $_GET['status_id'] === '1' ? 'selected' : '' ?>>Available</option>
+                    <option value="2" <?= isset($_GET['status_id']) && $_GET['status_id'] === '2' ? 'selected' : '' ?>>Maintenance</option>
+                    <option value="3" <?= isset($_GET['status_id']) && $_GET['status_id'] === '3' ? 'selected' : '' ?>>Occupied</option>
+                </select>
+                <button type="submit" class="search" name="search">Search</button>
+            </div>
+        </form>
+        <button type="button" onclick="document.getElementById('eventDialog').showModal();">
+            <img src="view/images/event-svgrepo-com.svg" alt="">
+            Add Event
+        </button>
     </div>
-
+    <p class="count">Showing <?= count($data) ?> of <?= $allCount ?></p>
     <div class="content">
     <?php foreach($data as $row):?>
         <div class="card">
@@ -184,6 +191,56 @@
                 </div>
             </div>
 
+        </div>
+    </form>
+</dialog>
+<dialog id="eventDialog" class="event_dialog">
+    <form method="POST" action="" class="modal_form">
+        <div class="modal_header">
+            <h2>Event Information</h2>
+        </div>
+
+        <div class="modal_body">
+            <h3>Basic Information</h3>
+
+            <div class="input_group">
+                <label>Event Name*</label>
+                <input type="text" name="title">
+            </div>
+            
+            <div class="input_group">
+                <label>Description</label>
+                <input type="text" name="description">
+            </div>
+            <div class="modal_flex-group">
+                <div class="modal_flex-group__txtbox">
+                    <div class="input_group">
+                        <label>Time*</label>
+                        <input type="datetime-local" id="meeting" name="time">
+                    </div>
+
+                    <div class="input_group">
+                        <label>Location</label>
+                        <select name="location_id">
+                            <option value="" disabled selected>Select Location</option>
+                        <?php foreach($data as $row ): ?>
+                            <option value="<?= $row['id'] ?>">
+                                <?= $row['room'] ?>
+                            </option>
+                        <?php endforeach ?>
+                        </select>
+                    </div>
+
+                    <div class="input_group">
+                        <label>Organizer</label>
+                        <input type="text" name="organizer">
+                    </div>
+                </div>
+                <div class="modal_flex-group__btn">
+                    <button type="submit" name="add_event" class="save_btn">Add Event</button>
+                    <button type="button" onclick="document.getElementById('eventDialog').close();">Cancel</button>
+                </div>
+            </div>
         </div>
     </form>
 </dialog>

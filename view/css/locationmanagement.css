@@ -8,6 +8,10 @@ body{
     display: flex;
     gap: 5px;
 }
+.flex-group img{
+    height: 20px;
+    width: 20px;
+}
 .flex-group a{
     margin-right: 15px;
     text-decoration: none;
@@ -51,6 +55,8 @@ header h1 span{
     display: flex;
     align-items: center;
     gap:5px;
+
+    margin-bottom: 5px;
 }
 .search_bar__filter__select{
     width: 200px;
@@ -59,6 +65,36 @@ header h1 span{
     border-radius: 20px;
 
     margin-right:10px;
+}
+.search{
+    background:#D8CFC2;
+    color: black;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 6px;
+}
+.search_bar button{
+    background: white;
+    color: black;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 6px;
+
+    font-weight: 600;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.search_bar button img{
+    height: 20px;
+    width: 20px;
+}
+.count{
+    font-size: 0.8rem;
+    color: gray;
+    margin-bottom: 10px;
 }
 .content{
     display: grid;
@@ -125,7 +161,7 @@ header h1 span{
 .edit_dialog {
     border: none;
     border-radius: 10px;
-    padding: 0;
+    padding: 30px;
     width: 500px;
 }
 
@@ -139,7 +175,7 @@ label{
 .modal_body{
     border:1px black solid;
     border-radius: 5px;
-    padding: 10px;
+    padding: 20px;
 
 }
 .modal_header {
@@ -206,4 +242,27 @@ label{
     border: none;
     padding: 8px 15px;
     border-radius: 6px;
+}
+
+/*==========EVENT MODAL==============*/
+.event_dialog {
+    border: none;
+    border-radius: 10px;
+    padding: 30px;
+    width: 500px;
+}
+
+.modal_flex-group{
+    display: flex;
+    justify-content: space-between;
+}
+.modal_flex-group__btn{
+    padding: 5px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
 }

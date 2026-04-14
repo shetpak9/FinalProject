@@ -48,7 +48,6 @@ class LocationController{
                 echo json_encode($this->gateway->getAll());
                 break;
             case "POST":
-                case "POST":
                 $data = $_POST;
                             
                 // Handle image upload

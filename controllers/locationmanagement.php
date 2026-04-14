@@ -2,10 +2,17 @@
 require 'src/display/location_view.php';
 
 $data = $gateway->getAll();
+$allCount = count($data);
 
 $css = '<link rel="stylesheet" href="view/css/locationmanagement.css">';
 
-if(isset($))
+if(isset($_GET['search'])){
+    $search = $_GET['keyword'] ?? '';
+    $type_id = $_GET['type_id'] ?? '';
+    $status_id = $_GET['status_id'] ?? '';
+
+    $data = $gateway->search($search, $type_id, $status_id);
+}
 
 if(isset($_POST['delete'])){
     $id = $_POST['id'];
@@ -39,16 +46,25 @@ if(isset($_POST['update'])){
     exit;
 }
 
+if(isset($_POST['add_event'])){
+    $data = $_POST;
+
+    $gateway->addEvent($data);
+
+    header("Location: " . $_SERVER['REQUEST_URI']);
+    exit;
+}
+
 require 'view/partials/header.php';
 
 require 'view/locationmanagement.view.php';
 
 ?>
 <script>
-    const dialog = document.getElementById("editDialog");
+    const edit = document.getElementById("editDialog");
 
     function openEditModal(id, room, capacity, status, type, floor, description, image) {
-    dialog.showModal();
+    edit.showModal();
 
     document.getElementById("edit_id").value = id;
     document.getElementById("edit_room").value = room;
@@ -57,11 +73,12 @@ require 'view/locationmanagement.view.php';
     document.getElementById("edit_type").value = type;
     document.getElementById("edit_floor").value = floor;
     document.getElementById("edit_description").value = description;
-}
+    }
 
     function closeModal() {
-        dialog.close();
+        edit.close();
     }
+
 </script>
 
 
