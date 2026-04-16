@@ -193,6 +193,14 @@ img{
     box-sizing: border-box;
 
 }
+.activity__container__header{
+    display: flex;
+    justify-content: space-between;
+}
+.activity__container__header img{
+    width: 10px;
+    height: 10px;
+}
 .activity__container h3{
     font-family: 700;
 

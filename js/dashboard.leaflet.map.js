@@ -20,34 +20,25 @@ fetch('/FinalProject/src/api/location?' + params.toString())
         markers = [];
 
         locations.forEach(loc => {
+            // Convert lat/lng to numbers
             const lat = parseFloat(loc.latitude);
             const lng = parseFloat(loc.longitude);
 
             if (isNaN(lat) || isNaN(lng)) return;
 
-            const marker = L.marker([lat, lng]).addTo(map)
+            // Add marker
+            const marker = L.marker([lat, lng]).addTo(map);
             markers.push(marker);
 
-            const typeloc = {
-                1: "Classroom",
-                2: "Laboratory",
-                3: "Office",
-                4: "Other Facilities"
-            }
-            marker.on('click', () => {
-                document.querySelector(".map_details__info h3").textContent = "Location Name: " + loc.room;
-                document.querySelector(".map_details__Description").textContent = "Description: " + (loc.description || "");
-                document.querySelector(".map_details__Type_id").textContent = "Location Type: " + (typeloc[loc.type_id] || "");
-
-                const img = document.querySelector(".map_details__image img");
-
-                if (loc.image) {
-                    img.src = "uploads/" + loc.image;
-                    img.style.display = "block";
-                } else {
-                    img.src = "view/images/Screenshot 2026-04-16 194758.png";
-                }
-            });
+            // Popup content
+            marker.bindPopup(`
+                <b>${loc.room}</b><br>
+                Floor: ${loc.floor}<br>
+                Capacity: ${loc.capacity}<br>
+                ${loc.description || ""}
+                <br>
+                ${loc.image ? `<img src="uploads/${loc.image}" width="150">` : ""}
+            `);
         });
     })
     .catch(err => console.error("Error loading locations:", err));

@@ -49,9 +49,10 @@ class LocationController{
                 $type_id = $_GET["type_id"] ?? '';
                 $status_id = $_GET["status_id"] ?? '';
                 $floor = $_GET["floor"] ?? '';
+                $room = $_GET["room"] ?? '';
                         
-                if ($keyword || $type_id || $status_id || $floor) {
-                    $data = $this->gateway->search($keyword, $type_id, $status_id, $floor);
+                if ($keyword || $type_id || $status_id || $floor || $room) {
+                    $data = $this->gateway->search($keyword, $type_id, $status_id, $floor, $room);
                 } else {
                     $data = $this->gateway->getAll();
                 }

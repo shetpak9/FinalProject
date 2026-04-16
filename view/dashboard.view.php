@@ -62,7 +62,7 @@
                         </select>
 
                         <h3>Room</h3>
-                        <select class="control__select" name="room">
+                        <select class="control__select" name="room" onchange="this.form.submit()">
                         <?php
                             if(isset($_GET['floor'])) {
                                 $selectedFloor = $_GET['floor'];
@@ -121,46 +121,12 @@
             
             <div class="activity">
                 <div class="activity__container">
-                    <h3>Recent Activity</h3>
-                    <div class="flex_wrap">
-                        <ul>
-                            <li>
-                                <div class="activity__recent">
-                                    <div class="activity__image">
-                                        <img src="view/images/stopwatch.png" alt="Stopwatch Icon">
-                                    </div>
-                                    <div class="activity__text">
-                                        <p class="room_text room_no">Room 211</p>
-                                        <p class="room_text room_status">Status changed to Maintenance</p>
-                                        <p class="room_text time">5 mins ago</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="activity__recent">
-                                    <div class="activity__image">
-                                        <img src="view/images/stopwatch.png" alt="Stopwatch Icon">
-                                    </div>
-                                    <div class="activity__text">
-                                        <p class="room_text room_no ">Room 111</p>
-                                        <p class="room_text room_status">Status changed to Available</p>
-                                        <p class="room_text time">20 mins ago</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="activity__recent">
-                                    <div class="activity__image">
-                                        <img src="view/images/stopwatch.png" alt="Stopwatch Icon">
-                                    </div>
-                                    <div class="activity__text">
-                                        <p class="room_text room_no">Room 316</p>
-                                        <p class="room_text room_status">Status changed to Available</p>
-                                        <p class="room_text time">5 mins ago</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                    <div class="activity__container__header">
+                        <h3>Announcement and Alerts</h3>
+                        <img src="view/images/bell-svgrepo-com.svg" alt="">
+                    </div>
+                    <div class="activity__container__scroll">
+                        
                     </div>
                 </div>
             </div>

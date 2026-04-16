@@ -150,20 +150,21 @@ class LocationGateway{
         return $data;
     }
 
-    public function search($keyword = '', $type_id = '', $status_id = '', $floor = ''): array{
+    public function search($keyword = '', $type_id = '', $status_id = '', $floor = '', $room = ''): array{
         $sql = "SELECT * FROM location " .
                "WHERE room LIKE :keyword ";
 
         if (!empty($type_id)) {
             $sql .= "AND type_id = :type_id ";
         }
-
         if (!empty($status_id)) {
             $sql .= "AND status_id = :status_id ";
         }
-
         if (!empty($floor)) {
             $sql .= "AND floor = :floor ";
+        }
+        if (!empty($room)) {
+            $sql .= "AND room = :room ";
         }
 
         $stmt = $this->conn->prepare($sql);
@@ -176,6 +177,9 @@ class LocationGateway{
         }
         if (!empty($floor)) {
             $stmt->bindValue(":floor", $floor, PDO::PARAM_INT);
+        }
+        if (!empty($room)) {
+            $stmt->bindValue(":room", $room, PDO::PARAM_STR);
         }
         $stmt->execute();
 

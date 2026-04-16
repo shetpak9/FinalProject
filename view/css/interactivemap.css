@@ -102,3 +102,20 @@ header h1 span{
     display: flex;
     justify-content: space-between;
 }
+.map_details__image{
+    display: flex;
+    justify-content: center;
+}
+.map_details img{
+    width: 100%;
+    height: 250px;
+
+    border-radius: 8px;
+}
+.map_details__info{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    align-items: center;
+}

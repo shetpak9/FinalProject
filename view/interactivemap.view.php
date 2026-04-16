@@ -51,12 +51,12 @@
                         </div>
 
                         <div class="map_details__image">
-                            <img src="" alt="">
+                            <img src="view/images/Screenshot 2026-04-16 194758.png" alt="">
                         </div>
 
                         <div class="map_details__info">
-                            <h3>Location Name</h3>
-                            <p class="map_details__Description">Location details and description go here. This section provides more information about the selected location on the map.</p>
+                            <h3>Location Name:</h3>
+                            <p class="map_details__Description">Description:</p>
                             <p class="map_details__Type_id">Location Type: </p>
                         </div>
                     </div>

@@ -25,4 +25,4 @@ require 'view/partials/header.php';
 require 'view/dashboard.view.php';
 ?>
 
-<script src="js/leaflet.map.js"></script>
+<script src="js/dashboard.leaflet.map.js"></script>
