@@ -24,12 +24,12 @@ function getIcon(type_id) {
     if (type_id == 1) iconUrl = 'view/images/green-circle-svgrepo-com.svg';
     else if (type_id == 2) iconUrl = 'view/images/red-circle-svgrepo-com.svg';
     else if (type_id == 3) iconUrl = 'view/images/orange-circle-svgrepo-com.svg';
-    else iconUrl = 'view/images/blue-circle-svgrepo-com.svgiew/images/default.png';
+    else iconUrl = 'view/images/blue-circle-svgrepo-com.svg';
 
     return L.icon({
         iconUrl: iconUrl,
-        iconSize: [35, 35],
-        iconAnchor: [17, 35],
+        iconSize: [10, 10],
+        iconAnchor: [10, 10],
         popupAnchor: [0, -35]
     });
 }

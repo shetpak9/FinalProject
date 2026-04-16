@@ -11,22 +11,6 @@ var Stadia_AlidadeSatellite = L.tileLayer('https://tiles.stadiamaps.com/tiles/al
 
 const params = new URLSearchParams(window.location.search);
 
-function getIcon(type_id) {
-    let iconUrl = '';
-
-    if (type_id == 1) iconUrl = 'view/images/green-circle-svgrepo-com.svg';
-    else if (type_id == 2) iconUrl = 'view/images/red-circle-svgrepo-com.svg';
-    else if (type_id == 3) iconUrl = 'view/images/orange-circle-svgrepo-com.svg';
-    else iconUrl = 'view/images/blue-circle-svgrepo-com.svg';
-
-    return L.icon({
-        iconUrl: iconUrl,
-        iconSize: [10, 10],
-        iconAnchor: [10, 10],
-        popupAnchor: [0, -35]
-    });
-}
-
 fetch('/FinalProject/src/api/location?' + params.toString())
     .then(res => res.json())
     .then(locations => {
