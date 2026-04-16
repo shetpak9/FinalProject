@@ -191,7 +191,7 @@ class LocationGateway{
         
         return $data;
     }
-    public function addEvent($data): string{
+    public function addEvent($data){
         $sql = "INSERT INTO event (title, description, location_id, time, organizer) " .
                "VALUES (:title, :description, :location_id, :time, :organizer)";
 
@@ -207,7 +207,25 @@ class LocationGateway{
         $stmt->bindValue(":organizer", $data["organizer"], PDO::PARAM_STR);
 
         $stmt->execute();
+    }
+    public function addAnnouncement($data){
+        $sql = "INSERT INTO announcement (title, announcement_type, description) " .
+               "VALUES (:title, :announcement_type, :description)";
 
-        return $this->conn->lastInsertId();
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->bindValue(":title", $data["title"], PDO::PARAM_STR);
+        $stmt->bindValue(":announcement_type", $data["announcement_type"], PDO::PARAM_STR);
+        $stmt->bindValue(":description", $data["description"] ?? null, PDO::PARAM_STR);
+
+        $stmt->execute();
+    }
+    public function getAnnouncements(): array{
+        $sql = "SELECT * FROM announcement ORDER BY created_at DESC";
+        $stmt = $this->conn->query($sql);
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
     }
 }

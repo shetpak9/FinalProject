@@ -126,7 +126,31 @@
                         <img src="view/images/bell-svgrepo-com.svg" alt="">
                     </div>
                     <div class="activity__container__scroll">
-                        
+                        <?php foreach($announcements as $announcement): ?>
+                            <?php 
+                            if($announcement['announcement_type'] == 'maintenance'){
+                                $color = 'orange';
+                                $img_src = 'view/images/maintenance-svgrepo-com.svg';
+                            }
+                            else if($announcement['announcement_type'] == 'alert'){
+                                $color = 'yellow';
+                                $img_src = 'view/images/alert-square-svgrepo-com.svg';
+                            }
+                            else {
+                                $color = 'lightblue';
+                                $img_src = 'view/images/info-svgrepo-com.svg';
+                            }
+                            ?>
+
+                            <div style="background: <?= $color ?>;" class="recent_announcement">
+                                <div class="announcement_header">
+                                    <img src="<?= $img_src ?>" alt="">
+                                    <h3><?= $announcement['title'] ?></h3>
+                                </div>
+                                <p><?= $announcement['description'] ?></p>
+                                <span class="timestamp"><?= date('Y-m-d H:i:s', strtotime($announcement['created_at'])) ?></span>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

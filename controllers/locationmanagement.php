@@ -54,6 +54,14 @@ if(isset($_POST['add_event'])){
     header("Location: " . $_SERVER['REQUEST_URI']);
     exit;
 }
+if(isset($_POST['announcement'])){
+    $data = $_POST;
+
+    $gateway->addAnnouncement($data);
+
+    header("Location: " . $_SERVER['REQUEST_URI']);
+    exit;
+}
 
 require 'view/partials/header.php';
 

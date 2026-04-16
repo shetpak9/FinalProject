@@ -37,10 +37,16 @@
                 <button type="submit" class="search" name="search">Search</button>
             </div>
         </form>
-        <button type="button" onclick="document.getElementById('eventDialog').showModal();">
-            <img src="view/images/event-svgrepo-com.svg" alt="">
-            Add Event
-        </button>
+        <div class="search_bar__button">
+            <button type="button" onclick="document.getElementById('eventDialog').showModal();">
+                <img src="view/images/event-svgrepo-com.svg" alt="">
+                Add Event
+            </button>
+            <button type="button" onclick="document.getElementById('announcementDialog').showModal()">
+                <img src="view/images/megaphone-svgrepo-com.svg" alt="">
+                Make Announcement
+            </button>
+        </div>
     </div>
     <p class="count">Showing <?= count($data) ?> of <?= $allCount ?></p>
     <div class="content">
@@ -241,6 +247,38 @@
                     <button type="button" onclick="document.getElementById('eventDialog').close();">Cancel</button>
                 </div>
             </div>
+        </div>
+    </form>
+</dialog>
+<dialog id="announcementDialog" class="event_dialog">
+    <form action="" method="POST">
+        <div class="modal_header">
+            <h2>Make Announcement</h2>
+        </div>
+
+        <div class="modal_body">
+            <h3>Make Announcement</h3>
+
+            <div class="input_group">
+                <label>Title*</label>
+                <input type="text" name="title" required>
+            </div>
+            <div class="input_group">
+                <label>Type of Announcement</label>
+                <select name="announcement_type">
+                    <option value="" disabled selected>Select</option>
+                    <option value="maintenance">Maintenance</option>
+                    <option value="alert">Alert</option>
+                    <option value="information">Information</option>
+                </select>
+            </div>
+            <div class="input_group">
+                <label>Description</label>
+                <input type="text" name="description">
+            </div>
+            <div class="modal_flex-group__btn">
+                <button type="submit" name="announcement" class="save_btn">Make Announcement</button>
+                <button type="button" onclick="document.getElementById('announcementDialog').close();">Cancel</button>
         </div>
     </form>
 </dialog>

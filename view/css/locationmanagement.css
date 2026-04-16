@@ -73,6 +73,10 @@ header h1 span{
     padding: 5px 15px;
     border-radius: 6px;
 }
+.search_bar__button{
+    display: flex;
+    gap: 10px;
+}
 .search_bar button{
     background: white;
     color: black;

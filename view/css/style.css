@@ -198,8 +198,8 @@ img{
     justify-content: space-between;
 }
 .activity__container__header img{
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
 }
 .activity__container h3{
     font-family: 700;
@@ -210,35 +210,34 @@ img{
     font-size: 0.8rem;
 
 }
-.activity img{
-    width: 30px;
-    height: 30px;
+.activity__container__scroll {       
+  height: 360px;       /* Mandatory: must have a height to scroll */
+  overflow-y: auto;    /* Adds vertical scrollbar only if content overflows */
 }
-.flex_wrap{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-.activity__recent{
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-.room_text{
+.recent_announcement{
+    padding: 15px;
+    border-radius: 8px;
+    color: black;
+
     margin-bottom: 5px;
 }
-.room_no{
-    font-weight: 600;
+.announcement_header{
+    display: flex;
+    gap:10px;
+
+    font-weight: bolder;
 }
-.room_status{
-    font-size: 0.9rem;
-    color: #555;
+.announcement_header img{
+    width: 15px;
+    height: 15px;
 }
-.time{
+.recent_announcement p{
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+.recent_announcement span{
     font-size: 0.8rem;
-    color: #999;
-    opacity: 0.8;
+    color: gray;
 }
 .quick-actions{
     background: #0B2545;
