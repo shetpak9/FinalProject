@@ -3,7 +3,7 @@
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 $route = [
-    '/FinalProject/' => 'controllers/dashboard.php',
+    '/FinalProject/' => 'controllers/interactivemap.php',
     '/FinalProject/addlocation' => 'controllers/addlocation.php',
     '/FinalProject/locationmanagement' => 'controllers/locationmanagement.php',
     '/FinalProject/viewlogs' => 'controllers/viewlogs.php',

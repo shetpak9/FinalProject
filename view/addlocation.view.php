@@ -17,7 +17,6 @@
                         <option value="3">Office</option>
                         <option value="4">Other Facilities</option>
                     </select>
-                    <input type="text" class="menu-item" placeholder="🚪 Room Number">
                     <select name="floor" class="menu-item" id="">
                         <option value="" disabled selected>Select a Floor</option>
                         <option value="1">Floor 1</option>
@@ -59,8 +58,3 @@
 </form>
 </body>
 </html>
-<script src="js/leaflet.map.js"></script>
-<script src="js/function.js"></script>
-<script>
-    onclick(map);
-</script>

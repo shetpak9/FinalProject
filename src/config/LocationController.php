@@ -45,7 +45,18 @@ class LocationController{
     private function processCollectionRequest($method): void {
         switch($method){
             case "GET":
-                echo json_encode($this->gateway->getAll());
+                $keyword = $_GET["keyword"] ?? '';
+                $type_id = $_GET["type_id"] ?? '';
+                $status_id = $_GET["status_id"] ?? '';
+                $floor = $_GET["floor"] ?? '';
+                        
+                if ($keyword || $type_id || $status_id || $floor) {
+                    $data = $this->gateway->search($keyword, $type_id, $status_id, $floor);
+                } else {
+                    $data = $this->gateway->getAll();
+                }
+                        
+                echo json_encode($data);
                 break;
             case "POST":
                 $data = $_POST;

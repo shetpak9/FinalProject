@@ -245,11 +245,14 @@ img{
 }
 .quick-actions button{
     background: whitesmoke;
-    color: black;
+    color: #0B2545;
     border: none;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
+
+    font-size: 0.8rem;
+    font-weight: 600;
 }
 .quick-actions img{
     margin-top: 10px;

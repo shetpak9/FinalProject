@@ -1,0 +1,104 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #D8CFC2;
+    padding: 20px;
+}
+.container{
+    background: grey;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+header h1{
+    font-size: 1.5rem;
+    font-weight: 600;
+    
+    color: whitesmoke;
+}
+header p{
+    font-size: 0.8rem;
+    color: black;
+    margin-bottom: 20px;
+}
+header h1 span{
+    color: #0B2545;
+}
+.search_bar{
+    background: #0B2545;
+    color: white;
+
+    padding:10px;
+    width: 98%;
+    border-radius: 6px;
+
+    margin-bottom: 10px;
+}
+.search_bar input{
+    width: 98%;
+    padding: 10px;
+    
+    border-radius: 5px;
+
+    font-size: 0.9rem;
+
+    margin-bottom: 5px;
+}
+
+.main_content{
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 20px;
+}
+.map_section{
+    background: #0B2545;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+
+    box-sizing: border-box;
+}
+.placeholder_map{
+    width: 100%;
+    height: 500px;
+
+    border-radius: 8px;
+}
+#leaflet-map {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+
+.filter_section{
+    background: #0B2545;
+    color: white;
+
+    padding: 20px;
+    border-radius: 8px;
+
+    margin-bottom: 10px;
+
+}
+.map_details{
+    background: #0B2545;
+    color: white;
+
+    padding: 20px;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.map_details__button{
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    font-weight: 600;
+
+    display: flex;
+    justify-content: space-between;
+}

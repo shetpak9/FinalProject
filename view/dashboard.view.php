@@ -177,4 +177,3 @@
     </div>
 </body>
 </html>
-<script src="js/leaflet.map.js"></script>

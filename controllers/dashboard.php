@@ -23,3 +23,6 @@ $css = '<link rel="stylesheet" href="view/css/style.css">';
 require 'view/partials/header.php';
 
 require 'view/dashboard.view.php';
+?>
+
+<script src="js/leaflet.map.js"></script>
