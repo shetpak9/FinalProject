@@ -21,10 +21,10 @@ function onclick(map){
 function getIcon(type_id) {
     let iconUrl = '';
 
-    if (type_id == 1) iconUrl = 'view/images/green-circle-svgrepo-com.svg';
-    else if (type_id == 2) iconUrl = 'view/images/red-circle-svgrepo-com.svg';
-    else if (type_id == 3) iconUrl = 'view/images/orange-circle-svgrepo-com.svg';
-    else iconUrl = 'view/images/blue-circle-svgrepo-com.svg';
+    if (type_id == 1) iconUrl = '../view/images/green-circle-svgrepo-com.svg';
+    else if (type_id == 2) iconUrl = '../view/images/red-circle-svgrepo-com.svg';
+    else if (type_id == 3) iconUrl = '../view/images/orange-circle-svgrepo-com.svg';
+    else iconUrl = '../view/images/blue-circle-svgrepo-com.svg';
 
     return L.icon({
         iconUrl: iconUrl,

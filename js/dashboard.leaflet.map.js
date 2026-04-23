@@ -15,7 +15,6 @@ fetch('/FinalProject/src/api/location?' + params.toString())
     .then(res => res.json())
     .then(locations => {
         console.log("Locations:", locations);
-
         markers.forEach(m => map.removeLayer(m));
         markers = [];
 
@@ -23,7 +22,7 @@ fetch('/FinalProject/src/api/location?' + params.toString())
             // Convert lat/lng to numbers
             const lat = parseFloat(loc.latitude);
             const lng = parseFloat(loc.longitude);
-
+            
             if (isNaN(lat) || isNaN(lng)) return;
 
             // Add marker
@@ -39,8 +38,7 @@ fetch('/FinalProject/src/api/location?' + params.toString())
                 Capacity: ${loc.capacity}<br>
                 ${loc.description || ""}
                 <br>
-                ${loc.image ? `<img src="uploads/${loc.image}" width="150">` : ""}
+                ${loc.image ? `<img src="../uploads/${loc.image}" width="150">` : ""}
             `);
         });
-    })
-    .catch(err => console.error("Error loading locations:", err));
+    }).catch(err => console.error("Error loading locations:", err));

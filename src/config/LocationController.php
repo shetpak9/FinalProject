@@ -55,8 +55,7 @@ class LocationController{
                     $data = $this->gateway->search($keyword, $type_id, $status_id, $floor, $room);
                 } else {
                     $data = $this->gateway->getAll();
-                }
-                        
+                }           
                 echo json_encode($data);
                 break;
             case "POST":

@@ -1,8 +1,13 @@
 <body>
     <div class="dashboard">
         <header>
-            <h1>Dash<span>board</span></h1>
-            <p>Overview of school map and locations</p>
+            <div class="flex_text">
+                <h1>Dash<span>board</span></h1>
+                <p>Overview of school map and locations</p>
+            </div>
+            <div class="flex_button">
+                <button type="button" onclick="window.location.href='controllers/logout.php'">Logout</button>
+            </div>
         </header>
 
         <section class="cards">
@@ -130,7 +135,7 @@
                             <?php 
                             if($announcement['announcement_type'] == 'maintenance'){
                                 $color = 'orange';
-                                $img_src = 'view/images/maintenance-svgrepo-com.svg';
+                                $img_src ='view/images/maintenance-svgrepo-com.svg';
                             }
                             else if($announcement['announcement_type'] == 'alert'){
                                 $color = 'yellow';
@@ -161,9 +166,12 @@
                 <button onclick="window.location.href='addlocation'">Add Locations <br> <img src="view/images/map.png" alt=""></button>
                 <button onclick="window.location.href='locationmanagement'">Manage Locations <br><img src="view/images/location.png" alt=""></button>
                 <button onclick="window.location.href='viewlogs'">View Logs <br><img src="view/images/bar-chart.png" alt=""></button>
+                <button onclick="window.location.href='setup-mfa'">Enable MFA <br><img src="view/images/people.png" alt=""></button>
             </div>
         </section>
         
     </div>
+    <script src="js/function.js"></script>
+    <script src="js/dashboard.leaflet.map.js"></script>
 </body>
 </html>

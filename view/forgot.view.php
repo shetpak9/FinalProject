@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forgot Password</title>
+</head>
+<body>
+
+<h2>Forgot Password</h2>
+
+<form method="POST" action="../controllers/forgot-password.php">
+    <input type="email" name="email" placeholder="Enter your email" required><br><br>
+    <button type="submit">Send Reset Link</button>
+</form>
+
+<br>
+<a href="login.view">Back to Login</a>
+
+</body>
+</html>

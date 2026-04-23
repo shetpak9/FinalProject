@@ -21,7 +21,9 @@ fetch('/FinalProject/src/api/location')
             const lng = parseFloat(loc.longitude);
 
             // Add marker
-            const marker = L.marker([lat, lng]).addTo(map);
+            const marker = L.marker([lat, lng], {
+                icon: getIcon(loc.type_id)
+            }).addTo(map);
 
             // Popup content
             marker.bindPopup(`
@@ -36,3 +38,10 @@ fetch('/FinalProject/src/api/location')
     })
     .catch(err => console.error("Error loading locations:", err));
 
+document.getElementById("toggleNode").addEventListener("click", function() {
+    nodeMode = !nodeMode;
+
+    this.textContent = nodeMode 
+        ? "Disable Node Mode" 
+        : "Enable Node Mode";
+});

@@ -43,7 +43,7 @@
                 Add Event
             </button>
             <button type="button" onclick="document.getElementById('announcementDialog').showModal()">
-                <img src="view/images/megaphone-svgrepo-com.svg" alt="">
+                <img src="view/images/announcement-svgrepo-com.svg" alt="">
                 Make Announcement
             </button>
         </div>

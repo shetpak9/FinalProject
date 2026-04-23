@@ -33,7 +33,7 @@ class LocationGateway{
         $stmt->bindValue(":floor", $data["floor"], PDO::PARAM_INT);
         $stmt->bindValue(":description", $data["description"] ?? null, PDO::PARAM_STR);
         $stmt->bindValue(":capacity", $data["capacity"], PDO::PARAM_INT);
-        $stmt->bindValue(":image", $data["image"], PDO::PARAM_STR);
+        $stmt->bindValue(":image", $data["image"] ?? null, PDO::PARAM_STR);
 
         $stmt->execute();
 
@@ -207,6 +207,16 @@ class LocationGateway{
         $stmt->bindValue(":organizer", $data["organizer"], PDO::PARAM_STR);
 
         $stmt->execute();
+    }
+    public function getEvents(): array{
+        $sql = "SELECT event.*, location.room, location.floor FROM event " .
+               "JOIN location ON event.location_id = location.id " .
+               "ORDER BY time DESC";
+        $stmt = $this->conn->query($sql);
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
     }
     public function addAnnouncement($data){
         $sql = "INSERT INTO announcement (title, announcement_type, description) " .
