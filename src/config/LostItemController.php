@@ -35,6 +35,21 @@ class LostItemController{
                 $data = (array) json_decode(file_get_contents("php://input"), true);
 
                 $id = $this->gateway->create($data);
+                
+                // Log the action
+                if(session_status() === PHP_SESSION_NONE){
+                    session_start();
+                }
+                $this->logAction(
+                    $_SESSION['user_id'] ?? 0,
+                    'REPORT_ITEM',
+                    'lost_item',
+                    $id,
+                    [
+                        'item_type' => $data['item_type'] ?? null,
+                        'location' => $data['location'] ?? null
+                    ]
+                );
 
                 echo json_encode(["message" => "Lost item created",
                                  "id" => $id]);
@@ -42,6 +57,24 @@ class LostItemController{
             default:
                 http_response_code(405);
                 header("Allow: GET, POST");
+        }
+    }
+    
+    private function logAction(
+        int $userId,
+        string $action,
+        string $entityType,
+        ?int $entityId = null,
+        ?array $details = null
+    ): void {
+        try {
+            require_once __DIR__ . '/Database.php';
+            require_once __DIR__ . '/LogGateway.php';
+            $database = new Database("localhost", "school_map", "root", "");
+            $logGateway = new LogGateway($database);
+            $logGateway->log($userId, $action, $entityType, $entityId, $details);
+        } catch (Exception $e) {
+            error_log("Logging failed: " . $e->getMessage());
         }
     }
 }

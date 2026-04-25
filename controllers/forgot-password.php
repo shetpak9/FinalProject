@@ -14,6 +14,8 @@ $expires = date("Y-m-d H:i:s", strtotime("+1 hour"));
 
 $pdo->prepare("INSERT INTO password_resets (user_id, token, expires_at) VALUES (?, ?, ?)")->execute([$user['id'], $token, $expires]);
 
-$link = "http://localhost/FinalProject/view/reset.view.php?token=$token";
+$link = "http://localhost/FinalProject/reset?token=$token";
 
 sendMail($user['email'], "Reset Password", "Click: $link");
+
+header("Location: /FinalProject/login?error=reset");

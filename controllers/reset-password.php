@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdo->prepare("DELETE FROM password_resets WHERE token=?")
         ->execute([$_GET['token']]);
 
-    header("Location: ../view/login.view.php");
+    header("Location: /FinalProject/login");
     exit;
 }
 ?>

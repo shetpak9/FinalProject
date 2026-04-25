@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #06141B 0%, #11212D 35%, #4A5C6A 70%, #CCD0CF 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Login Box */
+.login-box {
+    display: flex;
+    background: #ccd0cfa9;
+    border-radius: 10px;
+    align-items: center;
+    overflow: hidden;
+    padding: 40px;
+    gap: 40px;
+}
+
+/* Left Form */
+.login-form {
+    flex: 1;
+    color: #16206e;
+}
+
+.login-form h1 {
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c2c2c;
+}
+
+.login-form label {
+    font-size: 14px;
+    margin-top: 15px;
+    display: block;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #252525;
+    background: transparent;
+    color: black;
+}
+
+/* Button */
+.login-form button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background: #072c58;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Register text */
+.register-text {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.register-text a {
+    color: #1c3a58;
+    text-decoration: none;
+}
+
+/* Right Side Logo */
+.logo-section img {
+    height: 350px;
+    width: 360px;
+}
+.fade_mess {
+  position: fixed;
+  top: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: rgba(245, 241, 232, 0.9);
+  color: black;
+  padding: 10px 20px;
+  border-radius: 6px;
+
+  opacity: 0;
+  animation: fadeInOut 3s ease-in-out;
+
+  z-index: 9999;
+}
+
+@keyframes fadeInOut {
+  0%   { opacity: 0; transform: translate(-50%, -20px); }
+  20%  { opacity: 1; transform: translate(-50%, 0); }
+  80%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -20px); }
+}

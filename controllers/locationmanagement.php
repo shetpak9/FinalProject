@@ -1,5 +1,7 @@
 <?php
 require 'src/display/location_view.php';
+require 'src/config/LogUtil.php';
+
 
 $data = $gateway->getAll();
 $allCount = count($data);
@@ -16,7 +18,14 @@ if(isset($_GET['search'])){
 
 if(isset($_POST['delete'])){
     $id = $_POST['id'];
+    $location = $gateway->get($id);
     $gateway->delete($id);
+    
+    // Log the deletion
+    logAction($pdo, $_SESSION['user_id'], 'DELETE', 'location', $id, [
+        'room' => $location['room'] ?? null,
+        'floor' => $location['floor'] ?? null
+    ]);
 }
 
 if(isset($_POST['update'])){
@@ -42,6 +51,15 @@ if(isset($_POST['update'])){
 
     $gateway->update($current, $data);
     
+    // Log the update
+    $changes = [];
+    foreach ($data as $key => $value) {
+        if ($current[$key] != $value && $key != 'id') {
+            $changes[$key] = ['old' => $current[$key], 'new' => $value];
+        }
+    }
+    logAction($pdo, $_SESSION['user_id'], 'UPDATE', 'location', $id, $changes);
+    
     header("Location: " . $_SERVER['REQUEST_URI']);
     exit;
 }
@@ -49,7 +67,13 @@ if(isset($_POST['update'])){
 if(isset($_POST['add_event'])){
     $data = $_POST;
 
-    $gateway->addEvent($data);
+    $eventId = $gateway->addEvent($data);
+
+    // Log the event creation
+    logAction($pdo, $_SESSION['user_id'], 'CREATE', 'event', $eventId, [
+        'location_id' => $data['location_id'] ?? null,
+        'event_title' => $data['event_title'] ?? null
+    ]);
 
     header("Location: " . $_SERVER['REQUEST_URI']);
     exit;
@@ -57,7 +81,13 @@ if(isset($_POST['add_event'])){
 if(isset($_POST['announcement'])){
     $data = $_POST;
 
-    $gateway->addAnnouncement($data);
+    $announcementId = $gateway->addAnnouncement($data);
+
+    // Log the announcement creation
+    logAction($pdo, $_SESSION['user_id'], 'CREATE', 'announcement', $announcementId, [
+        'title' => $data['title'] ?? null,
+        'announcement_type' => $data['announcement_type'] ?? null
+    ]);
 
     header("Location: " . $_SERVER['REQUEST_URI']);
     exit;

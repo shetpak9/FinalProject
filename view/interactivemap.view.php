@@ -2,9 +2,9 @@
 <div class="layout">
     <aside class="sidebar">
         <div class="menu_top">
-            <h3>Menu</h3>
+            <img src="view/images/Copilot_20260424_221814-removebg-preview.png" alt="">
             <div class="menu_btn_flex">
-                <img src="view/images/event-1-svgrepo-com.svg" alt="">
+                <img src="view/images/event-available-svgrepo-com.svg" alt="">
                 <button type="button" onclick="document.getElementById('eventDialog').showModal();">Event</button>
             </div>
             <div class="menu_btn_flex">
@@ -17,7 +17,14 @@
             </div>
         </div>
         <div class="menu_bottom">
-            <button>Setting</button>
+            <div class="menu_bottom__flex">
+                <button type="button" onclick="window.location.href='controllers/logout.php'">Logout</button>
+            </div>  
+            <div class="menu_bottom__flex">  
+                <button type="button" onclick="document.getElementById('settingsDialog').showModal();">
+                    Settings
+                </button>
+            </div>
         </div>
     </aside>
     <div class="container">
@@ -26,13 +33,11 @@
                 <h1>Interactive <span>Map</span></h1>
                 <p>View and Navigate School Locations</p>
             </div>
-            <div class="flex_button">
-                <button type="button" onclick="window.location.href='controllers/logout.php'">Logout</button>
-            </div>
         </header>
         <form action="" method="GET">
             <div class="search_bar">
                 <input type="text" name="keyword" placeholder="Search locations...">
+                <input type="submit" value="Search">
             </div>
 
             <div class="main_content">
@@ -46,29 +51,34 @@
                 
                 <div class="content_section">
                     <div class="filter_section">
-                        <img src="" alt="">
-                        <label>Filters</label>
-                        <select class="search_bar__filter__select" name="type_id" id="">
-                            <option value="" <?= !isset($_GET['type_id']) ? 'selected' : '' ?>>All types</option>
-                            <option value="1" <?= isset($_GET['type_id']) && $_GET['type_id'] === '1' ? 'selected' : '' ?>>Classroom</option>
-                            <option value="2" <?= isset($_GET['type_id']) && $_GET['type_id'] === '2' ? 'selected' : '' ?>>Lab</option>
-                            <option value="3" <?= isset($_GET['type_id']) && $_GET['type_id'] === '3' ? 'selected' : '' ?>>Office</option>
-                            <option value="4" <?= isset($_GET['type_id']) && $_GET['type_id'] === '4' ? 'selected' : '' ?>>Other Facilities</option>
-                        </select>
-                        <select class="search_bar__filter__select" name="status_id" id="">
-                            <option value="" <?= !isset($_GET['status_id']) ? 'selected' : '' ?>>All Status</option>
-                            <option value="1" <?= isset($_GET['status_id']) && $_GET['status_id'] === '1' ? 'selected' : '' ?>>Available</option>
-                            <option value="2" <?= isset($_GET['status_id']) && $_GET['status_id'] === '2' ? 'selected' : '' ?>>Maintenance</option>
-                            <option value="3" <?= isset($_GET['status_id']) && $_GET['status_id'] === '3' ? 'selected' : '' ?>>Occupied</option>
-                        </select>
-                        <select class="search_bar__filter__select" name="floor" id="">
-                            <option value="" <?= !isset($_GET['floor']) ? 'selected' : '' ?>>All Floors</option>
-                            <option value="1" <?= isset($_GET['floor']) && $_GET['floor'] === '1' ? 'selected' : '' ?>>Floor 1</option>
-                            <option value="2" <?= isset($_GET['floor']) && $_GET['floor'] === '2' ? 'selected' : '' ?>>Floor 2</option>
-                            <option value="3" <?= isset($_GET['floor']) && $_GET['floor'] === '3' ? 'selected' : '' ?>>Floor 3</option>
-                            <option value="4" <?= isset($_GET['floor']) && $_GET['floor'] === '4' ? 'selected' : '' ?>>Floor 4</option>
-                            <option value="5" <?= isset($_GET['floor']) && $_GET['floor'] === '5' ? 'selected' : '' ?>>Floor 5</option>
-                        </select>
+                        <div class="filter_section__txt">
+                            <img src="view/images/filter-svgrepo-com.svg" alt="">
+                            <label>Filter:</label>
+                        </div>
+                        <div class="filter_section__dd">
+                            <select class="search_bar__filter__select" name="type_id" id="">
+                                <option value="" <?= !isset($_GET['type_id']) ? 'selected' : '' ?>>All types</option>
+                                <option value="1" <?= isset($_GET['type_id']) && $_GET['type_id'] === '1' ? 'selected' : '' ?>>Classroom</option>
+                                <option value="2" <?= isset($_GET['type_id']) && $_GET['type_id'] === '2' ? 'selected' : '' ?>>Lab</option>
+                                <option value="3" <?= isset($_GET['type_id']) && $_GET['type_id'] === '3' ? 'selected' : '' ?>>Office</option>
+                                <option value="4" <?= isset($_GET['type_id']) && $_GET['type_id'] === '4' ? 'selected' : '' ?>>Other Facilities</option>
+                            </select>
+                            <select class="search_bar__filter__select" name="status_id" id="">
+                                <option value="" <?= !isset($_GET['status_id']) ? 'selected' : '' ?>>All Status</option>
+                                <option value="1" <?= isset($_GET['status_id']) && $_GET['status_id'] === '1' ? 'selected' : '' ?>>Available</option>
+                                <option value="2" <?= isset($_GET['status_id']) && $_GET['status_id'] === '2' ? 'selected' : '' ?>>Maintenance</option>
+                                <option value="3" <?= isset($_GET['status_id']) && $_GET['status_id'] === '3' ? 'selected' : '' ?>>Occupied</option>
+                            </select>
+                            <select class="search_bar__filter__select" name="floor" id="">
+                                <option value="" <?= !isset($_GET['floor']) ? 'selected' : '' ?>>All Floors</option>
+                                <option value="1" <?= isset($_GET['floor']) && $_GET['floor'] === '1' ? 'selected' : '' ?>>Floor 1</option>
+                                <option value="2" <?= isset($_GET['floor']) && $_GET['floor'] === '2' ? 'selected' : '' ?>>Floor 2</option>
+                                <option value="3" <?= isset($_GET['floor']) && $_GET['floor'] === '3' ? 'selected' : '' ?>>Floor 3</option>
+                                <option value="4" <?= isset($_GET['floor']) && $_GET['floor'] === '4' ? 'selected' : '' ?>>Floor 4</option>
+                                <option value="5" <?= isset($_GET['floor']) && $_GET['floor'] === '5' ? 'selected' : '' ?>>Floor 5</option>
+                            </select>
+                            <input type="submit" value="Filter">
+                        </div>
                     </div>
                     <div class="map_details">
                         <div class="map_details__button">
@@ -273,6 +283,34 @@
 
             <?php endforeach ?>
         </div>
+    </div>
+</dialog>
+<dialog id="settingsDialog" class="settings_dialog">
+    <div class="settings_container">
+
+        <div class="settings_header">
+            <h3>Settings</h3>
+            <button type="button" onclick="document.getElementById('settingsDialog').close()">X</button>
+        </div>
+
+        <div class="settings_body">
+            <div class="settings_section">
+                <label class="settings_option">
+                    <input type="checkbox" id="toggleMarkers" checked>
+                    Show Markers
+                </label>
+
+                <label class="settings_option">
+                    <input type="checkbox" id="toggleShapes" checked>
+                    Show Zones
+                </label>
+                <label class="settings_option">
+                    <input type="checkbox" id="themeToggle">
+                    Dark Mode
+                </label>
+            </div>
+        </div>
+
     </div>
 </dialog>
 </body>

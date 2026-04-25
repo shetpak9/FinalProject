@@ -1,0 +1,291 @@
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #06141B 0%, #11212D 35%, #4A5C6A 70%, #CCD0CF 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .logs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #dfe3e2;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .logs-header {
+            background: #dfe3e2;
+            color: #0B2545;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logs-header h1 {
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .logs-header h1 span{
+            color: grey;
+        }
+
+        .back-button {
+            background: #0B2545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .back-button:hover {
+            background: #2c3746;
+        }
+
+        .filters {
+            padding: 20px;
+            background: #0B2545;
+            border-bottom: 1px solid #e0e0e0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            align-items: end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .filter-group select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-apply {
+            background: #e0e0e0;
+            color: #333e;
+        }
+
+        .filter-reset {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .logs-content {
+            padding: 20px;
+        }
+
+        .logs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .logs-table thead {
+            background: #0B2545;
+
+        }
+
+        .logs-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 13px;
+            border-bottom: 2px solid #e0e0e0;
+            text-transform: uppercase;
+        }
+
+        .logs-table tbody tr {
+            border-bottom: 1px solid #e0e0e0;
+            transition: background 0.2s ease;
+        }
+
+        .logs-table tbody tr:hover {
+            background: #f9f9f9;
+        }
+
+        .logs-table td {
+            padding: 12px 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .action-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+/*
+        .action-create {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+
+        .action-update {
+            background: #bbdefb;
+            color: #1565c0;
+        }
+
+        .action-delete {
+            background: #ffcccc;
+            color: #c62828;
+        }
+
+        .action-other {
+            background: #ffe0b2;
+            color: #e65100;
+        }*/
+
+        .entity-badge {
+            background: #f0f0f0;
+            color: #333;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        .timestamp {
+            color: #999;
+            font-size: 12px;
+        }
+
+        .details-expand {
+            cursor: pointer;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .details-expand:hover {
+            text-decoration: underline;
+        }
+
+        .details-row {
+            display: none;
+        }
+
+        .details-row.active {
+            display: table-row;
+        }
+
+        .details-content {
+            padding: 15px;
+            background: #f5f5f5;
+        }
+
+        .details-content pre {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .pagination a,
+        .pagination span {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #667eea;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .pagination a:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .pagination span.current {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .pagination span.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .empty-state p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: #0B2545;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .value {
+            font-size: 28px;
+            font-weight: 700;
+        }

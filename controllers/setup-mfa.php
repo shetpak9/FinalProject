@@ -1,6 +1,6 @@
 <?php
 require 'bootstrap.php';
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use RobThree\Auth\TwoFactorAuth;
 use RobThree\Auth\Providers\Qr\BaconQrCodeProvider;
@@ -79,5 +79,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $isSystemWide = $isAdmin;
 
 $css = '<link rel="stylesheet" href="view/css/style.css">';
-require 'view/partials/header.php';
-require 'view/setup-mfa.view.php';
+require '../view/partials/header.php';
+require '../view/setup-mfa.view.php';

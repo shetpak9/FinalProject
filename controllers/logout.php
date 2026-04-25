@@ -5,5 +5,5 @@ session_start();
 session_unset();
 session_destroy();
 
-header("Location: ../view/login.view.php");
+header("Location: /FinalProject/login");
 exit;

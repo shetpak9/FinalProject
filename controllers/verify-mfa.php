@@ -15,7 +15,8 @@ $role   = $_SESSION['auth_pending']['role'];
 $inputCode = $_POST['code'] ?? '';
 
 if (empty($inputCode)) {
-    die("MFA code required.");
+    header("Location: /FinalProject/mfa?require");
+    exit;
 }
 
 /* =========================
@@ -45,7 +46,8 @@ $tfa = new TwoFactorAuth($qrProvider, 'FinalProject');
 $isValid = $tfa->verifyCode($user['mfa_secret'], $inputCode);
 
 if (!$isValid) {
-    die("Invalid MFA code.");
+    header("Location: /FinalProject/mfa?error=invalid");
+    exit;
 }
 
 /* =========================

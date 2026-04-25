@@ -38,7 +38,7 @@ fetch('/FinalProject/src/api/location?' + params.toString())
                 Capacity: ${loc.capacity}<br>
                 ${loc.description || ""}
                 <br>
-                ${loc.image ? `<img src="../uploads/${loc.image}" width="150">` : ""}
+                ${loc.image ? `<img src="uploads/${loc.image}" width="150">` : ""}
             `);
         });
     }).catch(err => console.error("Error loading locations:", err));

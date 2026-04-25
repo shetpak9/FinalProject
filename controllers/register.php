@@ -3,12 +3,13 @@ require 'bootstrap.php';
 
 require 'mailer.php';
 
-$username = $_POST['username'];
 $email = $_POST['email'];
+$display = $_POST['name'];
+$username = $_POST['username'];
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-$stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-$stmt->execute([$username, $email, $password]);
+$stmt = $pdo->prepare("INSERT INTO users (username, email, password, name) VALUES (?, ?, ?, ?)");
+$stmt->execute([$username, $email, $password, $display]);
 
 $userId = $pdo->lastInsertId();
 
@@ -29,6 +30,5 @@ $link = "http://localhost/FinalProject/controllers/verify-email.php?token=$token
 
 sendMail($email, "Verify your email", "Click: $link");
 
-echo "Check your email to verify account.";
 sleep(3);
-header("Location: view/login.view.php");
+header("Location: /FinalProject/login?error=verify");

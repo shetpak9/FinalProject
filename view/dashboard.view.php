@@ -6,6 +6,9 @@
                 <p>Overview of school map and locations</p>
             </div>
             <div class="flex_button">
+                <button onclick="window.location.href='controllers/<?= $mfaEnabled ? 'disable-mfa' : 'setup-mfa' ?>'">
+                    <?= $mfaEnabled ? 'Disable MFA' : 'Enable MFA' ?>    
+                </button>
                 <button type="button" onclick="window.location.href='controllers/logout.php'">Logout</button>
             </div>
         </header>
@@ -165,8 +168,8 @@
             <div class="quick-actions__button">
                 <button onclick="window.location.href='addlocation'">Add Locations <br> <img src="view/images/map.png" alt=""></button>
                 <button onclick="window.location.href='locationmanagement'">Manage Locations <br><img src="view/images/location.png" alt=""></button>
+                <button onclick="window.location.href='mapcontrol'">Map Area Control <br><img src="view/images/area-svgrepo-com.svg" alt=""></button>
                 <button onclick="window.location.href='viewlogs'">View Logs <br><img src="view/images/bar-chart.png" alt=""></button>
-                <button onclick="window.location.href='setup-mfa'">Enable MFA <br><img src="view/images/people.png" alt=""></button>
             </div>
         </section>
         

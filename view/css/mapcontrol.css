@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #d8cfc2;
+}
+.container {
+    padding: 20px;
+}
+.top_text {
+    margin-bottom: 10px;
+    display: flex;
+}
+.top_text a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #0b2545;
+    font-weight: 500;
+}
+.top_text p{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.map_section {
+    background: #0b2545;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(80vh + 10px);
+}
+.map{
+    width: 100%;
+    height: 100vh;
+    border-radius: 8px;
+}
+#leaflet-map{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}

@@ -38,10 +38,3 @@ fetch('/FinalProject/src/api/location')
     })
     .catch(err => console.error("Error loading locations:", err));
 
-document.getElementById("toggleNode").addEventListener("click", function() {
-    nodeMode = !nodeMode;
-
-    this.textContent = nodeMode 
-        ? "Disable Node Mode" 
-        : "Enable Node Mode";
-});

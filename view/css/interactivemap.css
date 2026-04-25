@@ -1,6 +1,20 @@
+:root {
+    --bg: #dfe3e2;
+    --text: #0B2545;
+    --primary: #0B2545;
+    --card: #ffffff;
+    --map-bg: #0B2545;
+}
+body.dark {
+    --bg: #1e1e1e;
+    --text: #ffffff;
+    --primary: #4da3ff;
+    --card: #2a2a2a;
+    --map-bg: #111827;
+}
 body{
     font-family: 'Poppins', sans-serif;
-    background: #D8CFC2;
+    background: linear-gradient(135deg, #06141B 0%, #11212D 35%, #4A5C6A 70%, #CCD0CF 100%);
     padding: 20px;
     padding-left: 0;
 }
@@ -12,19 +26,20 @@ body{
 /* Sidebar */
 .sidebar{
     width: fit-content;
-    background: #0B2545;
-    color: white;
+    background: var(--bg);
+    color:var(--primary) ;
     padding: 10px;
-    border-radius: 10px;
-    margin-right: 10px;
+    border-radius: 5px;
 
-    position: sticky;
     top: 20px;
 
-    height: calc(100vh - 40px); /* full height minus body padding */
+     /* full height minus body padding */
     
     display: flex;
     flex-direction: column;
+
+    transform: translateX(20px); /* 👈 move into container */
+    z-index: 10; /* 👈 make sure it's above */
 }
 .menu_bottom{
      margin-top: auto;
@@ -35,25 +50,26 @@ body{
     border: none;
     border-radius: 6px;
     background: rgba(255,255,255,0.1);
-    color: white;
+    color:var(--primary) ;
+}
+.menu_bottom button:hover{
+    background: rgba(22, 22, 22, 0.459);
 }
 .sidebar h3{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
 
     margin-bottom: 10px;
 }
 .menu_btn_flex{
     padding: 5px;
     margin: 5px;
+    margin-bottom: 20px;
     
     display: flex;
     gap:1px;
 
     border-radius: 5px;
-}
-.menu_btn_flex img{
-    height: 20px;
-    width: 20px;
 }
 .sidebar button{
     border: none;
@@ -62,19 +78,27 @@ body{
     cursor: pointer;
 
     background: none;
-    color: white;
+    color:var(--primary);
 
     font-size: 1.1rem;
     
 }
 .sidebar .menu_btn_flex:hover{
-    background: rgba(255,255,255,0.1);
+    background: rgba(22, 22, 22, 0.459);
+}
+.menu_top img{
+    height:150px;
+    width: 160px;
+}
+.menu_btn_flex img{
+    height: 30px;
+    width: 30px;
 }
 
 /* Prevent double scroll */
 
 .container{
-    background: grey;
+    background: var(--bg);
     padding: 20px;
     border-radius: 10px;
     flex: 1;
@@ -85,8 +109,11 @@ header{
     align-items: center;
     margin-bottom: 20px;
 }
+.flex_text{
+    margin-left: 10px;
+}
 .flex_button button{
-    background: #0B2545;
+    background: var(--primary);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -99,7 +126,7 @@ header h1{
     font-size: 1.5rem;
     font-weight: 600;
     
-    color: whitesmoke;
+    color: rgb(59, 59, 59);
 }
 header p{
     font-size: 0.8rem;
@@ -107,20 +134,24 @@ header p{
     margin-bottom: 20px;
 }
 header h1 span{
-    color: #0B2545;
+    color: var(--primary);
 }
 .search_bar{
-    background: #0B2545;
+    background: var(--primary);
     color: white;
 
     padding:10px;
     width: 98%;
     border-radius: 6px;
 
+    display: flex;
+    gap:5px;
+    align-items: center;
+
     margin-bottom: 10px;
 }
-.search_bar input{
-    width: 98%;
+.search_bar input[type="text"]{
+    width: 95%;
     padding: 10px;
     
     border-radius: 5px;
@@ -129,6 +160,16 @@ header h1 span{
 
     margin-bottom: 5px;
 }
+.search_bar input[type="submit"]{
+    padding: 5px;
+    border-radius: 5px;
+
+    background: var(--bg);
+
+    font-size: 0.8rem;
+
+    height: fit-content;
+}
 
 .main_content{
     display: grid;
@@ -136,7 +177,7 @@ header h1 span{
     gap: 20px;
 }
 .map_section{
-    background: #0B2545;
+    background: var(--primary);
     color: white;
     padding: 20px;
     border-radius: 8px;
@@ -156,17 +197,25 @@ header h1 span{
 
 
 .filter_section{
-    background: #0B2545;
+    background: var(--primary);
     color: white;
 
-    padding: 20px;
+    padding: 10px;
     border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 
     margin-bottom: 10px;
 
 }
+.filter_section img{
+    height: 15px;
+    width: 15px;
+}
 .map_details{
-    background: #0B2545;
+    background: var(--primary);
     color: white;
 
     padding: 20px;
@@ -217,8 +266,8 @@ dialog::backdrop {
 
 
 .event_dialog{
-    background: #0B2545;
-    color:white;
+    background: white;
+    color:black;
 
     border: none;
     border-radius: 10px;
@@ -249,7 +298,7 @@ dialog::backdrop {
     color:grey;
 }
 .event_header{
-    color: white;
+    color:var(--primary) ;
     padding: 5px;
 }
 .event_header__xbtn{
@@ -286,7 +335,7 @@ dialog::backdrop {
     margin-bottom: 5px;
     border-radius: 10px;
 
-    border: 1px solid white;
+    border: 1px solid grey;
 }
 .event_title{
     background: #C1D5ED;
@@ -312,7 +361,7 @@ dialog::backdrop {
     background: white;
     color:black;
 
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 25px;
 
     font-size: 1rem;
@@ -543,4 +592,58 @@ dialog::backdrop {
 
     font-family: 'Inter', sans-serif;
 }
+.settings_dialog {
+    background: #909292;
 
+    border: none;
+    border-radius: 10px;
+    padding: 0;
+    width: 250px;
+
+    position: fixed;
+    top: 460px;
+    right: 780px;
+
+    overflow: visible;
+}
+
+.settings_container {
+    padding: 15px;
+}
+
+.settings_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.settings_body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.settings_option {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+#settingsDialog::backdrop {
+    background: transparent;
+}
+.settings_dialog::after {
+    content: "";
+    position: absolute;
+
+    width: 15px;
+    height: 15px;
+
+    background: #909292;
+
+    top: 87px;      /* adjust vertical position */
+    right: 240px;      /* pushes it outside the dialog */
+
+    transform: rotate(45deg);
+
+    box-shadow: -2px 2px 3px rgba(0,0,0,0.1);
+}

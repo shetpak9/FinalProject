@@ -8,12 +8,13 @@ $user = $stmt->fetch();
 
 
 if (!$user || !password_verify($_POST['password'], $user['password'])) {
-    header("Location: ../view/login.view?error=Invalid");
+    $error = true;
+    header("Location: /FinalProject/login?error=invalid");
     exit;
 }
 
 if (!$user['email_verified']) {
-    header("Location: ../view/login.view?error=Please verify your email first.");
+    header("Location: /FinalProject/login?error=verify");
     exit;
 }
 
@@ -30,7 +31,7 @@ $_SESSION['auth_pending'] = [
 ========================= */
 if ($user['mfa_enabled']) {
     if (!empty($user['mfa_secret'])) {
-        header("Location: ../view/mfa.view");
+        header("Location: /FinalProject/mfa");
     } else {
         header("Location: ../controllers/setup-mfa");
     }

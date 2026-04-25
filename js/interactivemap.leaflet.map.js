@@ -1,9 +1,12 @@
 let markers = [];
+let shapeLayers = [];
 
 let reportLatLng = null;
 let reportMarker = null;
 
 let selectedLocationId = null;
+
+let showMarkers = true;
 
 console.log("JS LOADED");
 window.map = L.map('leaflet-map').setView([14.483111, 121.187472], 19);
@@ -39,51 +42,84 @@ map.on('click', function(e) {
 const params = new URLSearchParams(window.location.search);
 
 fetch('/FinalProject/src/api/location?' + params.toString())
-    .then(res => res.json())
-    .then(locations => {
-        console.log("Locations:", locations);
+.then(res => res.json())
+.then(locations => {
+    console.log("Locations:", locations);
+    markers.forEach(m => map.removeLayer(m));
+    markers = [];
+    locations.forEach(loc => {
 
-        markers.forEach(m => map.removeLayer(m));
-        markers = [];
+        const lat = parseFloat(loc.latitude);
+        const lng = parseFloat(loc.longitude);
 
-        locations.forEach(loc => {
-            const lat = parseFloat(loc.latitude);
-            const lng = parseFloat(loc.longitude);
+        if (isNaN(lat) || isNaN(lng)) return;
 
-            if (isNaN(lat) || isNaN(lng)) return;
-
-            const marker = L.marker([lat, lng], {
-                icon: getIcon(loc.type_id)
-            }).addTo(map)
-            markers.push(marker);
-
-            const typeloc = {
-                1: "Classroom",
-                2: "Laboratory",
-                3: "Office",
-                4: "Other Facilities"
-            }
-            marker.on('click', () => {
-
-                console.log("Marker clicked!");
-                document.querySelector(".map_details__info h3").textContent = "Location Name: " + loc.room;
-                document.querySelector(".map_details__Description").textContent = "Description: " + (loc.description || "");
-                document.querySelector(".map_details__Type_id").textContent = "Location Type: " + (typeloc[loc.type_id] || "");
-
-                selectedLocationId = loc.id;
-
-                const img = document.querySelector(".map_details__image img");
-
-                if (loc.image) {
-                    img.src = "uploads/" + loc.image;
-                    img.style.display = "block";
-                } else {
-                    img.src = "view/images/Screenshot 2026-04-16 194758.png";
-                }
-            });
+        const marker = L.marker([lat, lng], {
+            icon: getIcon(loc.type_id)
         });
-    })
-    .catch(err => console.error("Error loading locations:", err));
+        markers.push({
+            marker: marker,
+            floor: loc.floor
+        });
+
+        if (showMarkers) {
+            marker.addTo(map);
+        }
+
+        const typeloc = {
+            1: "Classroom",
+            2: "Laboratory",
+            3: "Office",
+            4: "Other Facilities"
+        }
+        marker.on('click', () => {
+            console.log("Marker clicked!");
+            document.querySelector(".map_details__info h3").textContent = "Location Name: " + loc.room;
+            document.querySelector(".map_details__Description").textContent = "Description: " + (loc.description || "");
+            document.querySelector(".map_details__Type_id").textContent = "Location Type: " + (typeloc[loc.type_id] || "");
+            selectedLocationId = loc.id;
+            const img = document.querySelector(".map_details__image img");
+            if (loc.image) {
+                img.src = "uploads/" + loc.image;
+                img.style.display = "block";
+            } else {
+                img.src = "view/images/Screenshot 2026-04-16 194758.png";
+            }
+        });
+    });
+}).catch(err => console.error("Error loading locations:", err));
+
+fetch('/FinalProject/src/api/shape')
+.then(res => res.json())
+.then(data => {
+  data.forEach(shape => {
+    const geo = JSON.parse(shape.geojson);
+    console.log("Shapes:", geo);
+    const layer = L.geoJSON(geo, {
+      onEachFeature: function (feature, layer) {
+        layer._shapeId = shape.id;
+        layer.bindPopup(`
+          ${shape.zone_type} <br> 
+          Floor: ${shape.floor}<br>
+          ${shape.description || ""}
+        `);
+      },
+      style: function () {
+        return {
+          color: getZoneColor(shape.zone_type),
+          fillOpacity: 0.3,
+          weight: 1
+        };
+      }
+    });
+    layer.addTo(map);
+
+    shapeLayers.push({
+      layer: layer,
+      floor: shape.floor
+    });
+  });
+});
 
 const dialog = document.getElementById("reportDialog");
 
@@ -155,7 +191,7 @@ document.querySelector('[name="favorite"]').addEventListener('click', function(e
     })
     .catch(err => console.error("Favorite error:", err));
 
-    window.location.reload;
+    window.location.reload();
 });
 document.querySelectorAll(".show-on-map-btn").forEach(btn => {
     btn.addEventListener("click", function() {
@@ -224,7 +260,50 @@ document.querySelectorAll(".showItem-on-map-btn").forEach(btn => {
                     marker.closePopup();
                     map.removeLayer(marker);
                 }, 3000);
-            })
-            .catch(err => console.error("Error loading item:", err));
+            }).catch(err => console.error("Error loading item:", err));
     });
+});
+document.getElementById("toggleMarkers").addEventListener("change", function () {
+
+    showMarkers = this.checked;
+    console.log("Toggle:", showMarkers);
+
+    markers.forEach(m => {
+        if (showMarkers) {
+            m.marker.addTo(map);
+        } else {
+            map.removeLayer(m.marker);
+        }
+    });
+});
+document.getElementById("toggleShapes").addEventListener("change", function () {
+
+    const show = this.checked;
+
+    console.log("Shape toggle:", show);
+
+    shapeLayers.forEach(s => {
+      if (show) {
+        s.layer.addTo(map);
+      } else {
+        map.removeLayer(s.layer);
+      }
+    });
+});
+
+const themeToggle = document.getElementById("themeToggle");
+
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    themeToggle.checked = true;
+}
+
+themeToggle.addEventListener("change", function () {
+    if (this.checked) {
+        document.body.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+    } else {
+        document.body.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+    }
 });

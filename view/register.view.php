@@ -2,21 +2,45 @@
 <html>
 <head>
     <title>Register</title>
+    <link rel="stylesheet" href="view/css/reset.css">
+    <link rel="stylesheet" href="view/css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
 </head>
 <body>
+<div class="container">
+    <div class="login-box">
 
-<h2>Create Account</h2>
+        <!-- LEFT SIDE -->
+        <div class="login-form">
+            <h1>Create an Account</h1>
+            <form method="POST" action="/FinalProject/controllers/register.php">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Email" required>
 
-<form method="POST" action="../controllers/register.php">
-    <input type="text" name="username" placeholder="Username" required><br><br>
-    <input type="email" name="email" placeholder="Email" required><br><br>
-    <input type="password" name="password" placeholder="Password" required><br><br>
+                <label>Display Name</label>
+                <input type="text" name="name" placeholder="Display Name" required>
 
-    <button type="submit">Register</button>
-</form>
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Username" required>
 
-<br>
-<a href="login.view">Back to Login</a>
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Password" required>
 
+                <button>Create Account</button>
+            </form>
+            <p class="register-text">
+                Already Have an Account? 
+                <a href="login"> Login</a><br>
+            </p>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="logo-section">
+            <img src="view/images/Copilot_20260424_221814-removebg-preview.png" alt="">
+        </div>
+
+    </div>
+</div>
 </body>
 </html>

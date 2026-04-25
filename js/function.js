@@ -21,10 +21,10 @@ function onclick(map){
 function getIcon(type_id) {
     let iconUrl = '';
 
-    if (type_id == 1) iconUrl = '../view/images/green-circle-svgrepo-com.svg';
-    else if (type_id == 2) iconUrl = '../view/images/red-circle-svgrepo-com.svg';
-    else if (type_id == 3) iconUrl = '../view/images/orange-circle-svgrepo-com.svg';
-    else iconUrl = '../view/images/blue-circle-svgrepo-com.svg';
+    if (type_id == 1) iconUrl = '/FinalProject/view/images/green-circle-svgrepo-com.svg?v=1';
+    else if (type_id == 2) iconUrl = '/FinalProject/view/images/red-circle-svgrepo-com.svg?v=1';
+    else if (type_id == 3) iconUrl = '/FinalProject/view/images/orange-circle-svgrepo-com.svg?v=1';
+    else iconUrl = '/FinalProject/view/images/blue-circle-svgrepo-com.svg?v=1';
 
     return L.icon({
         iconUrl: iconUrl,
@@ -32,4 +32,11 @@ function getIcon(type_id) {
         iconAnchor: [10, 10],
         popupAnchor: [0, -35]
     });
+}
+function getZoneColor(type){
+    switch(type){
+        case "Restricted Area": return "red";
+        case "Maintenance Under Going": return "orange";
+        default: return "blue";
+    }
 }

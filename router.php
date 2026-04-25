@@ -12,6 +12,10 @@ $publicRoutes = [
     '/FinalProject/login',
     '/FinalProject/register',
     '/FinalProject/verify-email',
+    '/FinalProject/forgot',
+    '/FinalProject/mfa',
+    '/FinalProject/backup',
+    '/FinalProject/reset'
 ];
 
 /* =========================
@@ -21,7 +25,7 @@ $publicRoutes = [
 if ($path === '/FinalProject/') {
 
     if (!isset($_SESSION['user_id'])) {
-        header("Location: /FinalProject/view/login.view");
+        header("Location: /FinalProject/login");
         exit;
     }
 
@@ -42,7 +46,7 @@ if ($path === '/FinalProject/') {
 // If NOT logged in AND route is not public → redirect login
 if (!isset($_SESSION['user_id']) && !in_array($path, $publicRoutes)) {
 
-    header("Location: /FinalProject/view/login.view");
+    header("Location: /FinalProject/login");
     exit;
 }
 
@@ -51,11 +55,18 @@ if (!isset($_SESSION['user_id']) && !in_array($path, $publicRoutes)) {
 ========================= */
 
 $route = [
+    '/FinalProject/login' => 'view/login.view.php',
+    '/FinalProject/register' => 'view/register.view.php',
+    '/FinalProject/forgot' => 'view/forgot.view.php',
+    '/FinalProject/mfa' => 'view/mfa.view.php',
+    '/FinalProject/backup' => 'view/backup.view.php',
+    '/FinalProject/reset' => 'view/reset.view.php',
     '/FinalProject/addlocation' => 'controllers/addlocation.php',
     '/FinalProject/locationmanagement' => 'controllers/locationmanagement.php',
-    '/FinalProject/viewlogs' => 'controllers/viewlogs.php',
+    '/FinalProject/viewlogs' => 'controllers/view-logs.php',
     '/FinalProject/interactivemap' => 'controllers/interactivemap.php',
     '/FinalProject/setup-mfa' => 'controllers/setup-mfa.php',
+    '/FinalProject/mapcontrol'=> 'controllers/mapcontrol.php'
 ];
 
 /* =========================

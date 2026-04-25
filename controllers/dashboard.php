@@ -19,6 +19,15 @@ $otherCount = count(array_filter($data, fn($row) => $row['type_id'] == 4));
 
 $announcements = $gateway->getAnnouncements();
 
+// Check MFA status for current user
+$mfaEnabled = false;
+if (isset($_SESSION['user_id'])) {
+    $stmt = $database->getconnection()->prepare("SELECT mfa_enabled, mfa_secret FROM users WHERE id = ?");
+    $stmt->execute([$_SESSION['user_id']]);
+    $user = $stmt->fetch();
+    $mfaEnabled = $user && !empty($user['mfa_secret']);
+}
+
 /*HTML*/
 
 $css = '<link rel="stylesheet" href="view/css/style.css">';

@@ -28,12 +28,24 @@ class LocationController{
                 $data = (array) json_decode(file_get_contents("php://input"), true);
                 
                 $rows = $this->gateway->update($location, $data);
+                
+                // Log the update
+                if(session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
+                $this->logAction($_SESSION['user_id'] ?? 0, 'UPDATE', 'location', $id, $data);
 
                 echo json_encode(["message" => "Location updated",
                                  "rows" => $rows]);
                 break;
             case "DELETE":
                 $this->gateway->delete($id);
+                
+                // Log the deletion
+                if(session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
+                $this->logAction($_SESSION['user_id'] ?? 0, 'DELETE', 'location', $id, ['room' => $location['room'] ?? null]);
 
                 echo json_encode(["message" => "Location deleted"]);
                 break;
@@ -74,6 +86,16 @@ class LocationController{
                 }
                             
                 $id = $this->gateway->create($data);
+                
+                // Log the creation
+                if(session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
+                $this->logAction($_SESSION['user_id'] ?? 0, 'CREATE', 'location', $id, [
+                    'room' => $data['room'] ?? null,
+                    'floor' => $data['floor'] ?? null,
+                    'type_id' => $data['type_id'] ?? null
+                ]);
                             
                 http_response_code(201);
                 echo json_encode([
@@ -86,5 +108,23 @@ class LocationController{
                 header("Allow: GET, POST");
         }
 
+    }
+    
+    private function logAction(
+        int $userId,
+        string $action,
+        string $entityType,
+        ?int $entityId = null,
+        ?array $details = null
+    ): void {
+        try {
+            require_once __DIR__ . '/Database.php';
+            require_once __DIR__ . '/LogGateway.php';
+            $database = new Database("localhost", "school_map", "root", "");
+            $logGateway = new LogGateway($database);
+            $logGateway->log($userId, $action, $entityType, $entityId, $details);
+        } catch (Exception $e) {
+            error_log("Logging failed: " . $e->getMessage());
+        }
     }
 }
