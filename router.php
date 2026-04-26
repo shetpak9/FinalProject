@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+require 'controllers/bootstrap.php';
+ensureTableExist($pdo);
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 

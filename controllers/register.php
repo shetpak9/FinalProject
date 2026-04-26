@@ -3,6 +3,7 @@ require 'bootstrap.php';
 
 require 'mailer.php';
 
+
 $email = $_POST['email'];
 $display = $_POST['name'];
 $username = $_POST['username'];
@@ -32,3 +33,5 @@ sendMail($email, "Verify your email", "Click: $link");
 
 sleep(3);
 header("Location: /FinalProject/login?error=verify");
+
+
