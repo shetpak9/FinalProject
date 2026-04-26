@@ -4,13 +4,19 @@
     --primary: #0B2545;
     --card: #ffffff;
     --map-bg: #0B2545;
-}
+    --header: rgb(59, 59, 59);
+    --header_span: #0B2545;
+    --header_p: black;
+}   
 body.dark {
-    --bg: #1e1e1e;
-    --text: #ffffff;
-    --primary: #4da3ff;
-    --card: #2a2a2a;
-    --map-bg: #111827;
+    --bg: #0f172a;        /* deep blue-gray background */
+    --text: #e2e8f0;      /* soft white */
+    --primary: #0B2545;   /* modern blue accent */
+    --card: #1e293b;      /* elevated surface */
+    --map-bg: #020617;    /* near-black for map */
+    --header: white;
+    --header_span: #184b8a;
+    --header_p: white;
 }
 body{
     font-family: 'Poppins', sans-serif;
@@ -45,15 +51,24 @@ body{
      margin-top: auto;
 }
 .menu_bottom button{
-    width: 100%;
-    padding: 10px;
     border: none;
     border-radius: 6px;
     background: rgba(255,255,255,0.1);
     color:var(--primary) ;
 }
-.menu_bottom button:hover{
+.menu_bottom__flex:hover{
     background: rgba(22, 22, 22, 0.459);
+}
+.menu_bottom__flex{
+    display:flex;
+    justify-content: left;
+
+    border-radius: 5px;
+    padding: 5px;
+}
+.menu_bottom__flex img{
+    height: 30px;
+    width: 30px;
 }
 .sidebar h3{
     font-size: 1.4rem;
@@ -67,6 +82,7 @@ body{
     margin-bottom: 20px;
     
     display: flex;
+    justify-content: left;
     gap:1px;
 
     border-radius: 5px;
@@ -78,7 +94,7 @@ body{
     cursor: pointer;
 
     background: none;
-    color:var(--primary);
+    color:var(--text);
 
     font-size: 1.1rem;
     
@@ -125,16 +141,15 @@ header{
 header h1{
     font-size: 1.5rem;
     font-weight: 600;
-    
-    color: rgb(59, 59, 59);
+    color: var(--header);
 }
 header p{
     font-size: 0.8rem;
-    color: black;
+    color: var(--header_p);
     margin-bottom: 20px;
 }
 header h1 span{
-    color: var(--primary);
+    color: var(--header_span);
 }
 .search_bar{
     background: var(--primary);
@@ -160,17 +175,33 @@ header h1 span{
 
     margin-bottom: 5px;
 }
-.search_bar input[type="submit"]{
+.search_bar button{
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+}
+.search_bar button img{
+    height: 25px;
+    width: 25px;
+}
+.search_bar__filter__select{
     padding: 5px;
     border-radius: 5px;
+    border:none;
 
-    background: var(--bg);
-
-    font-size: 0.8rem;
-
-    height: fit-content;
+    background: whitesmoke;
 }
+.filter_section__dd input[type="submit"]{
+    padding: 5px;
+    border-radius: 5px;
+    border:none;
 
+    background: whitesmoke;
+}
+.filter_section__dd input[type="submit"]:hover{
+    background: rgb(163, 161, 161) ;
+}
 .main_content{
     display: grid;
     grid-template-columns: 1.7fr 1fr;

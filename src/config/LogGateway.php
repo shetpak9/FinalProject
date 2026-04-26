@@ -1,10 +1,10 @@
 <?php
 
 class LogGateway {
-    private $pdo;
+    private PDO $conn;
 
     public function __construct(Database $database) {
-        $this->pdo = $database->getconnection();
+        $this->conn = $database->getconnection();
         $this->ensureTableExists();
     }
 
@@ -26,7 +26,7 @@ class LogGateway {
         )";
         
         try {
-            $this->pdo->exec($sql);
+            $this->conn->exec($sql);
         } catch (PDOException $e) {
             // Table might already exist
         }
@@ -45,7 +45,7 @@ class LogGateway {
         $sql = "INSERT INTO audit_logs (user_id, action, entity_type, entity_id, details, ip_address, user_agent)
                 VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             $userId,
             $action,
@@ -76,7 +76,7 @@ class LogGateway {
 
         $sql .= " ORDER BY al.created_at DESC LIMIT ? OFFSET ?";
 
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->conn->prepare($sql);
         $params = [];
 
         if ($action) $params[] = $action;
@@ -98,7 +98,7 @@ class LogGateway {
                 ORDER BY created_at DESC
                 LIMIT ? OFFSET ?";
 
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->conn->prepare($sql);
         $stmt->execute([$userId, $limit, $offset]);
         return $stmt->fetchAll();
     }
@@ -113,7 +113,7 @@ class LogGateway {
             $sql .= " AND entity_type = ?";
         }
 
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->conn->prepare($sql);
         $params = [];
 
         if ($action) $params[] = $action;

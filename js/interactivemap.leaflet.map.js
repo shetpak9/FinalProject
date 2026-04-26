@@ -292,18 +292,32 @@ document.getElementById("toggleShapes").addEventListener("change", function () {
 });
 
 const themeToggle = document.getElementById("themeToggle");
+const images = document.querySelectorAll(".theme-img");
+
+function updateImages(theme) {
+    console.log("Switching to:", theme);
+    images.forEach(img => {
+        img.src = theme === "dark" ? img.dataset.dark : img.dataset.light;
+    });
+}
 
 if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark");
     themeToggle.checked = true;
+    updateImages("dark");
+} else {
+    updateImages("light");
 }
 
 themeToggle.addEventListener("change", function () {
     if (this.checked) {
         document.body.classList.add("dark");
         localStorage.setItem("theme", "dark");
+        updateImages("dark");
     } else {
         document.body.classList.remove("dark");
         localStorage.setItem("theme", "light");
+        updateImages("light");
     }
 });
+

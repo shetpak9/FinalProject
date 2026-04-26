@@ -69,24 +69,7 @@
                             ?>
                         </select>
 
-                        <h3>Room</h3>
-                        <select class="control__select" name="room" onchange="this.form.submit()">
-                        <?php
-                            if(isset($_GET['floor'])) {
-                                $selectedFloor = $_GET['floor'];
-                                foreach(array_keys($floor) as $f) {
-                                    if($f == $selectedFloor){
-                                        foreach($floor[$f] as $room) {
-                                            $selected = (isset($_GET['room']) && $_GET['room'] == $room) ? 'selected' : '';
-                                            echo "<option value='" . $room . "' $selected>" . $room . "</option>";
-                                        }
-                                    }
-                                }
-                            } else {
-                                echo "<option value='' disabled selected>Select a floor first</option>";
-                            }
-                        ?>
-                        </select>
+        
                     </form>
                 </div>
 
@@ -96,9 +79,10 @@
                             <h3>Status</h3>
                         </div>
                         <div class="status__color">
-                            <p><span class="green"></span> Available</p>
-                            <p><span class="red"></span> Occupied</p>
-                            <p><span class="orange"></span> Maintenance</p>
+                            <p><span class="green"></span> Classroom</p>
+                            <p><span class="red"></span> Lab</p>
+                            <p><span class="orange"></span> Office</p>
+                            <p><span class="blue"></span> Other Facilities</p>
                         </div>
                     </div>
                     <div class="location_type">

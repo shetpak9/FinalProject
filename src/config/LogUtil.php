@@ -1,9 +1,4 @@
 <?php
-
-/**
- * Log utility functions for tracking user and admin actions
- */
-
 function logAction(
     $pdo,
     int $userId,

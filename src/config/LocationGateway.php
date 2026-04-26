@@ -4,6 +4,85 @@ class LocationGateway{
     public function __construct(Database $database)
     {
         $this->conn = $database->getconnection();
+        $this->ensureTableExist();
+    }
+
+    private function ensureTableExist(): void{
+        $sql = "CREATE TABLE IF NOT EXISTS location (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                room VARCHAR(45) NOT NULL,
+                latitude DOUBLE NOT NULL,
+                longitude DOUBLE NOT NULL,
+                type_id INT,
+                floor INT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                status_id INT DEFAULT 3,
+                description VARCHAR(255),
+                capacity INT,
+                image VARCHAR(255),
+                UNIQUE KEY lat_lng_unique (latitude, longitude)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
+
+        try {
+            $this->conn->exec($sql);
+        } catch (PDOException $e) {
+            // Table might already exist
+        }
+
+        $sql = "CREATE TABLE IF NOT EXISTS `location_type` (
+                `id` INT AUTO_INCREMENT PRIMARY KEY,
+                `name` VARCHAR(45) NOT NULL
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
+
+        try {
+            $this->conn->exec($sql);
+        } catch (PDOException $e) {
+            // Table might already exist
+        }
+
+        $sql = "CREATE TABLE IF NOT EXISTS `status_type` (
+                `id` INT AUTO_INCREMENT PRIMARY KEY,
+                `status_type` VARCHAR(45) NOT NULL,
+                UNIQUE KEY `unique_status` (`status_type`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
+
+        try {
+            $this->conn->exec($sql);
+        } catch (PDOException $e) {
+            // Table might already exist
+        }
+
+        $sql = "CREATE TABLE IF NOT EXISTS `event` (
+                `event_id` INT NOT NULL AUTO_INCREMENT,
+                `title` VARCHAR(255) NOT NULL,
+                `event_status` VARCHAR(45) NOT NULL DEFAULT 'Upcoming',
+                `description` VARCHAR(255) DEFAULT NULL,
+                `location_id` INT NOT NULL,
+                `time` DATETIME NOT NULL,
+                `organizer` VARCHAR(45) NOT NULL,
+                PRIMARY KEY (`event_id`),
+                INDEX `fk_event_location` (`location_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+
+        try {
+            $this->conn->exec($sql);
+        } catch (PDOException $e) {
+            // Table might already exist
+        }
+
+        $sql = "CREATE TABLE IF NOT EXISTS `announcement` (
+                `idannouncement` INT NOT NULL AUTO_INCREMENT,
+                `title` VARCHAR(100) NOT NULL,
+                `announcement_type` VARCHAR(50) NOT NULL,
+                `description` TEXT NOT NULL,
+                `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY (`idannouncement`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+        try {
+            $this->conn->exec($sql);
+        } catch (PDOException $e) {
+            // Table might already exist
+        }
     }
 
     public function getAll(): array {

@@ -4,23 +4,50 @@
         <div class="menu_top">
             <img src="view/images/Copilot_20260424_221814-removebg-preview.png" alt="">
             <div class="menu_btn_flex">
-                <img src="view/images/event-available-svgrepo-com.svg" alt="">
+                <img 
+                    src="view/images/event-svgrepo-com(1).svg" 
+                    data-light="view/images/event-svgrepo-map-com.svg"
+                    data-dark="view/images/event-svgrepo-map-com(1).svg"
+                    class="theme-img"
+                >
                 <button type="button" onclick="document.getElementById('eventDialog').showModal();">Event</button>
             </div>
             <div class="menu_btn_flex">
-                <img src="view/images/heart-svgrepo-com.svg" alt="">
+                <img 
+                    src="view/images/heart-svgrepo-com.svg" 
+                    data-light="view/images/heart-svgrepo-com.svg"
+                    data-dark="view/images/heart-svgrepo-com(1).svg"
+                    class="theme-img"
+                >
                 <button type="button" onclick="document.getElementById('favDialog').showModal();">Favorites</button>
             </div>
             <div class="menu_btn_flex">
-                <img src="view/images/lost-items-missing-svgrepo-com.svg" alt="">
+                <img 
+                    src="view/images/lost-items-missing-svgrepo-com.svg" 
+                    data-light="view/images/lost-items-missing-svgrepo-com.svg"
+                    data-dark="view/images/lost-items-missing-svgrepo-com(1).svg"
+                    class="theme-img"
+                >
                 <button type="button" onclick="document.getElementById('itemDialog').showModal();">Lost Items</button>
             </div>
         </div>
         <div class="menu_bottom">
             <div class="menu_bottom__flex">
+                <img 
+                    src="view/images/logout-2-svgrepo-com.svg" 
+                    data-light="view/images/logout-2-svgrepo-com.svg"
+                    data-dark="view/images/logout-2-svgrepo-com(1).svg"
+                    class="theme-img"
+                >
                 <button type="button" onclick="window.location.href='controllers/logout.php'">Logout</button>
             </div>  
             <div class="menu_bottom__flex">  
+                <img 
+                    src="view/images/gear-svgrepo-com.svg" 
+                    data-light="view/images/gear-svgrepo-com.svg"
+                    data-dark="view/images/gear-svgrepo-com(1).svg"
+                    class="theme-img"
+                >
                 <button type="button" onclick="document.getElementById('settingsDialog').showModal();">
                     Settings
                 </button>
@@ -37,7 +64,7 @@
         <form action="" method="GET">
             <div class="search_bar">
                 <input type="text" name="keyword" placeholder="Search locations...">
-                <input type="submit" value="Search">
+                <button><img src="view/images/search-alt-2-svgrepo-com.svg" alt=""></button>
             </div>
 
             <div class="main_content">
@@ -305,12 +332,11 @@
                     Show Zones
                 </label>
                 <label class="settings_option">
-                    <input type="checkbox" id="themeToggle">
+                        <input type="checkbox" name="darkmode" id="themeToggle">
                     Dark Mode
                 </label>
             </div>
         </div>
-
     </div>
 </dialog>
 </body>

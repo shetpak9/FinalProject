@@ -40,7 +40,7 @@
                 You are not Registered? 
                 <a href="register">Make an account</a><br>
                 Forgot Password?
-                <a href="forgot">Fuck you</a>
+                <a href="forgot">Reset Password</a>
             </p>
         </div>
 

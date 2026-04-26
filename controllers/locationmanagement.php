@@ -2,7 +2,6 @@
 require 'src/display/location_view.php';
 require 'src/config/LogUtil.php';
 
-
 $data = $gateway->getAll();
 $allCount = count($data);
 

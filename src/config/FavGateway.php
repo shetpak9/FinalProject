@@ -4,6 +4,30 @@ class FavGateway{
     public function __construct(Database $database)
     {
         $this->conn = $database->getconnection();
+        $this->ensureTableExists();
+    }
+
+    private function ensureTableExists(): void{
+        $sql = "CREATE TABLE IF NOT EXISTS `favorites` (
+                `id` INT NOT NULL AUTO_INCREMENT,
+                `user_id` INT NOT NULL,
+                `location_id` INT NOT NULL,
+                `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY (`id`),
+                UNIQUE KEY `unique_user_location` (`user_id`, `location_id`),
+                INDEX `idx_location_id` (`location_id`),
+                CONSTRAINT `fk_fav_user`
+                    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
+                    ON DELETE CASCADE,
+                CONSTRAINT `fk_fav_location`
+                    FOREIGN KEY (`location_id`) REFERENCES `location`(`id`)
+                    ON DELETE CASCADE
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
+        try{
+            $this->conn->exec($sql);
+        }catch(PDOException $e){
+            throw $e;
+        }
     }
 
     public function getUserFav($user_id): array {
