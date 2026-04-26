@@ -1,5 +1,4 @@
 <?php
-require 'bootstrap.php';
 require 'src/config/LogGateway.php';
 
 // Check if user is logged in and is an admin

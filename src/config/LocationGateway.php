@@ -294,7 +294,7 @@ class LocationGateway{
         $stmt = $this->conn->query($sql);
 
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+        
         return $data;
     }
     public function addAnnouncement($data){

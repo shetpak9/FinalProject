@@ -1,8 +1,18 @@
 <?php
-
 session_start();
 require 'controllers/bootstrap.php';
+
 ensureTableExist($pdo);
+$pdo->query("
+    UPDATE event 
+    SET event_status = 'Ongoing'
+    WHERE event_status = 'Upcoming'
+    AND time <= NOW()
+");
+$pdo->query("
+    DELETE FROM event
+    WHERE time <= NOW() - INTERVAL 1 DAY
+");
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 

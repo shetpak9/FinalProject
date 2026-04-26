@@ -2,7 +2,12 @@
 <div class="layout">
     <aside class="sidebar">
         <div class="menu_top">
-            <img src="view/images/Copilot_20260424_221814-removebg-preview.png" alt="">
+            <img 
+                    src="view/images/Copilot_20260424_221814-removebg-preview.png" 
+                    data-light="view/images/Copilot_20260424_221814-removebg-preview.png"
+                    data-dark="view/images/678720890_4334231273387713_5956134698655175783_n-removebg-preview.png"
+                    class="theme-img"
+                >
             <div class="menu_btn_flex">
                 <img 
                     src="view/images/event-svgrepo-com(1).svg" 
@@ -109,8 +114,8 @@
                     </div>
                     <div class="map_details">
                         <div class="map_details__button">
-                            <button type="button" name="report">Report Lost Item</button>
-                            <button type="button" name="favorite">Add to Fav</button>
+                            <button type="button" name="report"><img src="view/images/report-text-svgrepo-com.svg" alt=""> Report Lost Item</button>
+                            <button type="button" name="favorite"><img src="view/images/heart-svgrepo-com1.svg" alt=""> Add to Fav</button>
                         </div>
 
                         <div class="map_details__image">
@@ -128,9 +133,9 @@
         </form>    
     </div>
 </div>
-    <dialog id="reportDialog">
-        <h3>Report Lost Item</h3>
-
+<dialog class="report_dialog" id="reportDialog">
+    <h3>Report Lost Item</h3>
+    <div class="report_container">
         <input type="text" class="report_txtbox" id="itemName" placeholder="Item name">
         <select name="item_state" class="report_txtbox" id="itemState" required>
             <option value="" placeholder="" disabled>What are you reporting?</option>
@@ -138,11 +143,11 @@
             <option value="Item Found">Item Found</option>
         </select>
         <textarea id="itemDesc" class="report_txtbox" placeholder="Description"></textarea>
-
         <div style="margin-top:10px;">
             <button id="submitReport">Submit</button>
             <button id="cancelReport">Cancel</button>
         </div>
+    </div>
 </dialog>
 <dialog id="eventDialog" class="event_dialog">
     <div class="event_container">
