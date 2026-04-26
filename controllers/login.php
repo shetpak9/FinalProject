@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'bootstrap.php';
 
 $stmt = $pdo->prepare("SELECT * FROM users WHERE username=?");
 $stmt->execute([$_POST['username']]);
