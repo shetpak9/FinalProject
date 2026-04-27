@@ -192,6 +192,7 @@ header h1 span{
 
     background: whitesmoke;
 }
+
 .filter_section__dd input[type="submit"]{
     padding: 5px;
     border-radius: 5px;
@@ -207,6 +208,45 @@ header h1 span{
     grid-template-columns: 1.7fr 1fr;
     gap: 20px;
 }
+.map_legends {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    background: var(--primary);
+    color: white;
+
+    border-radius: 8px;
+
+    margin-bottom: 5px;
+}
+.status__text {
+    font-weight: 600;
+}
+.status__color {
+    display: flex;       
+    gap: 20px;
+}
+.status__color p {
+    font-size: 0.8rem;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+}
+.status__color span {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.green{ background:#4CAF50; }
+.red{ background:#F44336; }
+.orange{ background:#FF9800; }
+.blue{ background:#3700ff; }
+
 .map_section{
     background: var(--primary);
     color: white;

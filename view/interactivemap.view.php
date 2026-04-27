@@ -71,9 +71,17 @@
                 <input type="text" name="keyword" placeholder="Search locations...">
                 <button><img src="view/images/search-alt-2-svgrepo-com.svg" alt=""></button>
             </div>
-
             <div class="main_content">
                 <div class="map_section">
+                    <div class="map_legends">
+                        <div class="status__text">Legend:</div>
+                        <div class="status__color">
+                            <p><span class="green"></span> Classroom</p>
+                            <p><span class="red"></span> Lab</p>
+                            <p><span class="orange"></span> Office</p>
+                            <p><span class="blue"></span> Other Facilities</p>
+                        </div>
+                    </div>
                     <div class="placeholder_map">
                         <div id="leaflet-map">
     
