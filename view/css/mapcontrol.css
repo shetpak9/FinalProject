@@ -42,3 +42,32 @@ body {
     height: 100%;
     border-radius: 8px;
 }
+.area_dialog{
+    border: none;
+    border-radius: 10px;
+    width: fit-content;
+}
+.area_dialog h3{
+    font-size: 1.1rem;
+    font-weight: 500;
+
+    margin-bottom: 10px;
+}
+.area_content{
+    border: 1px solid black;
+    border-radius: 10px;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.area_content select,
+.area_content textarea{
+    padding: 5px;
+
+    border-radius: 5px;
+
+    font-size: 0.9rem;
+}
