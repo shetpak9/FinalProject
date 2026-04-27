@@ -3,7 +3,10 @@
     <div class="logs-container">
         <div class="logs-header">
             <h1><span>Audit</span> Logs</h1>
-            <button class="back-button" onclick="window.location.href='/FinalProject/'">← Back to Dashboard</button>
+            <div class="logs-header__button">
+                <button class="back-button" onclick="window.location.href='/FinalProject/controllers/download-logs-pdf.php'">Download Reports</button>
+                <button class="back-button" onclick="window.location.href='/FinalProject/'">← Back to Dashboard</button>
+            </div>    
         </div>
 
         <div class="filters">
@@ -127,3 +130,26 @@
     </div>
 </body>
 </html>
+
+<script>
+function downloadLogsPDF() {
+    // Get the current HTML content
+    const htmlContent = document.documentElement.outerHTML;
+    
+    // Send to PHP controller and open in new tab
+    fetch('/FinalProject/controllers/download-logs-pdf.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: 'html=' + encodeURIComponent(htmlContent)
+    })
+    .then(res => res.blob())
+    .then(blob => {
+        // Open PDF in new tab
+        const url = window.URL.createObjectURL(blob);
+        window.open(url, '_blank');
+    })
+    .catch(err => console.error("Error:", err));
+}
+</script>
