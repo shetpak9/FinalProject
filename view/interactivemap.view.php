@@ -74,7 +74,6 @@
             <div class="main_content">
                 <div class="map_section">
                     <div class="map_legends">
-                        <div class="status__text">Legend:</div>
                         <div class="status__color">
                             <p><span class="green"></span> Classroom</p>
                             <p><span class="red"></span> Lab</p>
