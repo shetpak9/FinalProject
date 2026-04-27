@@ -35,7 +35,7 @@ body{
     background: var(--bg);
     color:var(--primary) ;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
 
     top: 20px;
 
@@ -548,7 +548,15 @@ dialog::backdrop {
     font-family: 'Inter', sans-serif;
 }
 .fav_details p{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
     margin-bottom: 15px;
+}
+.fav_details p img{
+    height: 20px;
+    width: 20px;
 }
 .fav_details p span{
     padding: 5px;

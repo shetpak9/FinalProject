@@ -259,8 +259,8 @@
                             }
                         ?>
                         <p><span style="background: <?= $color ?>;"><?= $row['status_type'] ?></span> <?= $row['loc_type'] ?></p>
-                        <p>Floor <?= $row['floor']?></p>
-                        <p>Capacity: <?= $row['capacity'] ?></p>
+                        <p><img src="view/images/floor-plan-svgrepo-com.svg" alt=""> Floor <?= $row['floor']?></p>
+                        <p><img src="view/images/people.png" alt=""> Capacity: <?= $row['capacity'] ?></p>
                         <p><?= $row['description'] ?></p>
                     </div>
                     <div class="fav_btn">

@@ -1,10 +1,14 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: #d8cfc2;
+    background: linear-gradient(135deg, #06141B 0%, #11212D 35%, #4A5C6A 70%, #CCD0CF 100%);
 }
 .container {
     padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+
+    background: #ccd0cfa9;
 }
 .top_text {
     margin-bottom: 10px;

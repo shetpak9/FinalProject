@@ -1,11 +1,11 @@
 body{
     font-family: 'Poppins', sans-serif;
-    background: #D8CFC2;
+    background: linear-gradient(135deg, #06141B 0%, #11212D 35%, #4A5C6A 70%, #CCD0CF 100%);
     padding: 20px;
 }
 
 .dashboard {
-    background: grey;
+    background: #ccd0cfa9;
     padding: 20px;
     border-radius: 10px;
 }

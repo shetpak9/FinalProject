@@ -1,9 +1,8 @@
 <?php
 require 'src/config/LogGateway.php';
 
-// Check if user is logged in and is an admin
 if (!isset($_SESSION['user_id'])) {
-    header("Location: /FinalProject/view/login.view.php");
+    header("Location: /FinalProject/login");
     exit;
 }
 

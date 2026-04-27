@@ -11,7 +11,7 @@ $pdo->query("
 ");
 $pdo->query("
     DELETE FROM event
-    WHERE time <= NOW() - INTERVAL 1 DAY
+    WHERE time <= NOW() - INTERVAL 12 HOUR
 ");
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
