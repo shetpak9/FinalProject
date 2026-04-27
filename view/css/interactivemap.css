@@ -151,6 +151,15 @@ header p{
 header h1 span{
     color: var(--header_span);
 }
+.download_btn{
+    padding: 10px;
+    
+    border-radius: 5px;
+    border: none;
+
+    background:var(--text);
+    color: var(--card);
+}
 .search_bar{
     background: var(--primary);
     color: white;

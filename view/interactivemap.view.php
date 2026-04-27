@@ -65,6 +65,9 @@
                 <h1>Interactive <span>Map</span></h1>
                 <p>View and Navigate School Locations</p>
             </div>
+            <button onclick="captureMapAndGeneratePDF()" class="download_btn">
+                Download Map as PDF
+            </button>
         </header>
         <form action="" method="GET">
             <div class="search_bar">
